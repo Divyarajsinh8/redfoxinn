@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  /* Red Fox Inn brand tokens (palette: placeholder — confirm with Raj) */
+  --color-ink: #1a1a1a;
+  --color-ivory: #faf7f2;
+  --color-slate-warm: #5e5e5e;
+
+  /* Primary — warm copper reading of the Hyatt Huntington bronze */
+  --color-fox: #b66c3c;
+  --color-forest: #2d3e2f;
+  --color-birch: #e8e0d4;
+  --color-brass: #b89656;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-ivory);
+  font-feature-settings: "ss01", "cv11";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
