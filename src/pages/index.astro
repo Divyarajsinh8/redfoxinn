@@ -6,97 +6,100 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="A 27-room independently operated inn on Main Street in Lancaster, NH. Between the White Mountain National Forest and the Connecticut River."
 >
   <main>
-    <section class="relative min-h-[85vh] flex items-center justify-center px-6 bg-[var(--color-forest)] text-[var(--color-ivory)]">
+    <section class="relative min-h-[85vh] flex items-center justify-center px-6 bg-fox-brown text-snow">
       <div class="max-w-4xl text-center py-24">
-        <p class="text-xs uppercase tracking-[0.3em] text-[var(--color-brass)] mb-6">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">
           Lancaster, New Hampshire &middot; Chartered 1763
         </p>
-        <h1 class="font-[var(--font-display)] text-5xl md:text-7xl leading-tight mb-8 text-[var(--color-ivory)]">
+        <h1 class="font-display font-light text-5xl md:text-7xl leading-[1.05] mb-8 text-snow">
           A new chapter<br />on an old road.
         </h1>
-        <p class="text-lg md:text-xl text-[var(--color-birch)] max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p class="font-body text-lg md:text-xl text-fox-cream max-w-2xl mx-auto mb-10 leading-relaxed font-light">
           Twenty-seven rooms on Main Street, three blocks from a 1913 bronze fox, and five minutes from the mountain a boy from this town protected for the rest of us.
         </p>
         <a
           href="#book"
-          class="inline-block px-8 py-3 bg-[var(--color-fox)] text-[var(--color-ivory)] font-medium tracking-wide hover:bg-[var(--color-brass)] transition-colors"
+          class="font-body inline-block px-10 py-3.5 bg-fox-red text-snow font-medium tracking-wide hover:bg-deep-red transition-colors"
         >
           Check Availability
         </a>
       </div>
     </section>
 
-    <section class="px-6 py-24 bg-[var(--color-ivory)]">
+    <section class="px-6 py-28 bg-snow">
       <div class="max-w-3xl mx-auto text-center">
-        <p class="text-xs uppercase tracking-[0.3em] text-[var(--color-fox)] mb-6">The Story</p>
-        <h2 class="font-[var(--font-display)] text-4xl md:text-5xl mb-8 leading-tight">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">The Story</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl mb-10 leading-[1.1]">
           Clever, caring, independent,<br />and at home with the wild.
         </h2>
-        <p class="text-lg text-[var(--color-slate-warm)] leading-relaxed mb-6">
-          When Lancaster turned 150 in 1913, the town commissioned a bronze fox from <em>Anna Vaughn Hyatt Huntington</em> &mdash; the same sculptor whose Joan of Arc stands in Riverside Park and whose El Cid guards the Hispanic Society in Manhattan.
+        <p class="font-body text-lg text-warm-gray leading-relaxed mb-6 font-light">
+          When Lancaster turned 150 in 1913, the town commissioned a bronze fox from <em class="font-display text-fox-brown">Anna Vaughn Hyatt Huntington</em> &mdash; the same sculptor whose Joan of Arc stands in Riverside Park and whose El Cid guards the Hispanic Society in Manhattan.
         </p>
-        <p class="text-lg text-[var(--color-slate-warm)] leading-relaxed">
+        <p class="font-body text-lg text-warm-gray leading-relaxed font-light">
           It still rests in Centennial Park at Main and School, three blocks from our front door. We borrowed our name from it.
         </p>
-        <a href="/story/" class="inline-block mt-10 text-sm uppercase tracking-[0.2em] text-[var(--color-fox)] border-b border-[var(--color-fox)] pb-1 hover:text-[var(--color-forest)] hover:border-[var(--color-forest)] transition-colors">
+        <a
+          href="/story/"
+          class="font-body inline-block mt-10 text-sm uppercase tracking-[0.2em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors"
+        >
           Read the full story
         </a>
       </div>
     </section>
 
-    <section class="px-6 py-24 bg-[var(--color-birch)]">
+    <section class="px-6 py-28 bg-fox-cream">
       <div class="max-w-5xl mx-auto">
-        <p class="text-xs uppercase tracking-[0.3em] text-[var(--color-fox)] mb-6 text-center">Experience</p>
-        <h2 class="font-[var(--font-display)] text-4xl md:text-5xl mb-12 text-center leading-tight">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 text-center font-medium">Experience</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl mb-14 text-center leading-[1.1]">
           The White Mountains<br />from Main Street.
         </h2>
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-12">
           <div>
-            <p class="font-[var(--font-display)] text-2xl mb-3">5 min</p>
-            <p class="uppercase tracking-[0.15em] text-xs text-[var(--color-fox)] mb-2">Weeks State Park</p>
-            <p class="text-[var(--color-slate-warm)] leading-relaxed">The 1912 fieldstone lodge of the senator who wrote the act that created the White Mountain National Forest.</p>
+            <p class="font-display font-light text-3xl mb-2 text-fox-red">5 min</p>
+            <p class="font-body uppercase tracking-[0.15em] text-xs text-fox-orange mb-3 font-medium">Weeks State Park</p>
+            <p class="font-body text-warm-gray leading-relaxed font-light">The 1912 fieldstone lodge of the senator who wrote the act that created the White Mountain National Forest.</p>
           </div>
           <div>
-            <p class="font-[var(--font-display)] text-2xl mb-3">15 min</p>
-            <p class="uppercase tracking-[0.15em] text-xs text-[var(--color-fox)] mb-2">Santa's Village</p>
-            <p class="text-[var(--color-slate-warm)] leading-relaxed">A working Christmas park since 1953. One of the few places in New England that still feels exactly like it did when it opened.</p>
+            <p class="font-display font-light text-3xl mb-2 text-fox-red">15 min</p>
+            <p class="font-body uppercase tracking-[0.15em] text-xs text-fox-orange mb-3 font-medium">Santa's Village</p>
+            <p class="font-body text-warm-gray leading-relaxed font-light">A working Christmas park since 1953. One of the few places in New England that still feels exactly like it did when it opened.</p>
           </div>
           <div>
-            <p class="font-[var(--font-display)] text-2xl mb-3">45 min</p>
-            <p class="uppercase tracking-[0.15em] text-xs text-[var(--color-fox)] mb-2">Bretton Woods</p>
-            <p class="text-[var(--color-slate-warm)] leading-relaxed">Omni Mount Washington Resort, Cog Railway, and the notch where Franconia opens to Cannon.</p>
+            <p class="font-display font-light text-3xl mb-2 text-fox-red">45 min</p>
+            <p class="font-body uppercase tracking-[0.15em] text-xs text-fox-orange mb-3 font-medium">Bretton Woods</p>
+            <p class="font-body text-warm-gray leading-relaxed font-light">Omni Mount Washington Resort, Cog Railway, and the notch where Franconia opens to Cannon.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="px-6 py-16 bg-[var(--color-forest)] text-[var(--color-birch)] text-sm">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-10">
+    <footer class="px-6 py-20 bg-night text-fox-cream text-sm">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
         <div>
-          <p class="font-[var(--font-display)] text-2xl text-[var(--color-ivory)] mb-3">Red Fox Inn</p>
-          <p class="leading-relaxed">
+          <p class="font-display font-light text-3xl text-snow mb-4">Red Fox Inn</p>
+          <p class="font-body leading-relaxed font-light">
             112 Main Street<br />Lancaster, NH 03584
           </p>
-          <p class="mt-3">
-            <a href="tel:+16037880000" class="hover:text-[var(--color-brass)]">(603) 788&#8209;XXXX</a>
+          <p class="font-body mt-4">
+            <a href="tel:+16037884921" class="hover:text-fox-amber transition-colors">(603) 788&#8209;4921</a>
           </p>
-          <p>
-            <a href="mailto:stay@redfoxinnnh.com" class="hover:text-[var(--color-brass)]">stay@redfoxinnnh.com</a>
+          <p class="font-body">
+            <a href="mailto:stay@redfoxinnnh.com" class="hover:text-fox-amber transition-colors">stay@redfoxinnnh.com</a>
           </p>
         </div>
         <div>
-          <p class="uppercase text-xs tracking-[0.2em] text-[var(--color-brass)] mb-4">Visit</p>
-          <ul class="space-y-2">
-            <li><a href="/stay/" class="hover:text-[var(--color-ivory)]">Stay</a></li>
-            <li><a href="/experience/" class="hover:text-[var(--color-ivory)]">Experience</a></li>
-            <li><a href="/journal/" class="hover:text-[var(--color-ivory)]">Journal</a></li>
-            <li><a href="/story/" class="hover:text-[var(--color-ivory)]">Story</a></li>
-            <li><a href="/policies/" class="hover:text-[var(--color-ivory)]">Policies</a></li>
+          <p class="font-body uppercase text-xs tracking-[0.2em] text-fox-orange mb-4 font-medium">Visit</p>
+          <ul class="font-body space-y-2 font-light">
+            <li><a href="/stay/" class="hover:text-snow transition-colors">Stay</a></li>
+            <li><a href="/experience/" class="hover:text-snow transition-colors">Experience</a></li>
+            <li><a href="/journal/" class="hover:text-snow transition-colors">Journal</a></li>
+            <li><a href="/story/" class="hover:text-snow transition-colors">Story</a></li>
+            <li><a href="/policies/" class="hover:text-snow transition-colors">Policies</a></li>
           </ul>
         </div>
         <div>
-          <p class="uppercase text-xs tracking-[0.2em] text-[var(--color-brass)] mb-4">The fine print</p>
-          <p class="leading-relaxed">
+          <p class="font-body uppercase text-xs tracking-[0.2em] text-fox-orange mb-4 font-medium">The fine print</p>
+          <p class="font-body leading-relaxed font-light">
             A 27-room independent inn in Coös County, New Hampshire. Between the White Mountain National Forest and the Connecticut River.
           </p>
         </div>

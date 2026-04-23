@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Red Fox Inn brand tokens (palette: placeholder — confirm with Raj) */
-  --color-ink: #1a1a1a;
-  --color-ivory: #faf7f2;
-  --color-slate-warm: #5e5e5e;
+  /* Red Fox Inn — official brand palette */
+  --color-fox-red: #C0392B;
+  --color-deep-red: #96281B;
+  --color-fox-orange: #D4691A;
+  --color-fox-amber: #E8A070;
+  --color-fox-cream: #F5EDE4;
+  --color-fox-brown: #2C1810;
+  --color-night: #1C1410;
+  --color-forest-green: #2D5016;
+  --color-forest-sage: #6B8F4E;
+  --color-snow: #FAFAF7;
+  --color-warm-gray: #8A8278;
 
-  /* Primary — warm copper reading of the Hyatt Huntington bronze */
-  --color-fox: #b66c3c;
-  --color-forest: #2d3e2f;
-  --color-birch: #e8e0d4;
-  --color-brass: #b89656;
-
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  /* Typography — Cormorant Garamond (display) + DM Sans (body). No system fonts. */
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
 }
 
 html {
@@ -22,14 +25,20 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-ink);
-  background: var(--color-ivory);
+  font-weight: 400;
+  color: var(--color-fox-brown);
+  background: var(--color-snow);
   font-feature-settings: "ss01", "cv11";
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.01em;
-  color: var(--color-ink);
+  color: var(--color-fox-brown);
+}
+
+::selection {
+  background: var(--color-fox-red);
+  color: var(--color-snow);
 }
