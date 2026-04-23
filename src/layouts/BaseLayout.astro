@@ -1,18 +1,24 @@
 ---
 import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props {
   title: string;
   description?: string;
   canonical?: string;
   noindex?: boolean;
+  transparentHeader?: boolean;
+  bareLayout?: boolean;
 }
 
 const {
   title,
-  description = 'Red Fox Inn — a 27-room independently operated inn on Main Street in Lancaster, New Hampshire. Between the White Mountain National Forest and the Connecticut River.',
+  description = 'Red Fox Inn — a 27-room inn on Main Street in Lancaster, New Hampshire. Park at your door. Walk to everything. Where the North Woods welcome you home.',
   canonical,
   noindex = false,
+  transparentHeader = false,
+  bareLayout = false,
 } = Astro.props;
 
 const siteUrl = 'https://redfoxinnnh.com';
@@ -29,11 +35,12 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString(
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#1C1410" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
 
@@ -45,6 +52,8 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString(
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body class="antialiased">
+    {!bareLayout && <SiteHeader transparent={transparentHeader} />}
     <slot />
+    {!bareLayout && <SiteFooter />}
   </body>
 </html>

@@ -1,109 +1,345 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const rooms = [
+  {
+    slug: 'standard-queen',
+    name: 'Standard Queen',
+    descriptor: 'One queen. Extra room. Everything you need.',
+    gradient: 'from-fox-brown via-deep-red to-fox-brown',
+  },
+  {
+    slug: 'deluxe-double',
+    name: 'Deluxe Double',
+    descriptor: 'Two double beds. Great for friends or a family of four.',
+    gradient: 'from-night via-fox-brown to-deep-red',
+  },
+  {
+    slug: 'deluxe-queen',
+    name: 'Deluxe Queen',
+    descriptor: 'Two queen beds. Our most spacious standard room.',
+    gradient: 'from-fox-brown via-fox-red to-fox-orange/40',
+  },
+  {
+    slug: 'retro-suite',
+    name: 'Retro Suite',
+    descriptor: 'Queen bed, sofa pullout, kitchenette. Room to spread out.',
+    gradient: 'from-deep-red via-fox-red to-fox-orange',
+  },
+  {
+    slug: 'extended-ground',
+    name: 'Extended Stay · Ground',
+    descriptor: 'Full kitchen. Private entrance. Your own place.',
+    gradient: 'from-forest-green via-fox-brown to-night',
+  },
+  {
+    slug: 'extended-upper',
+    name: 'Extended Stay · Upper',
+    descriptor: 'Full kitchen. Private entrance. Second floor quiet.',
+    gradient: 'from-night via-forest-green to-forest-sage/60',
+  },
+];
+
+const experiences = [
+  { title: 'Polish Princess Bakery', meta: '1 min walk', hook: 'Bread baked before your eyes. Pierogi that\u2019ll ruin you for all others.' },
+  { title: 'Copper Pig Brewery', meta: '2 min walk', hook: 'Award-winning craft beer in the basement of an old brick bank, right on the Israel River.' },
+  { title: 'Weeks State Park', meta: '5 min drive', hook: 'A Lancaster farm boy wrote the law that created the White Mountain National Forest. His lodge is now a state park with 360\u00b0 views.' },
+  { title: 'Mechanic St Covered Bridge', meta: '5 min walk', hook: 'Built in 1862. Walk to it from your door.' },
+  { title: 'Santa\u2019s Village', meta: '15 min drive', hook: 'Where all the action is for kids young and old. Worth the price of admission.' },
+  { title: 'Ride the Wilds ATV', meta: '25 min drive', hook: '1,000+ miles of interconnected trails. The Northeast\u2019s largest ATV network.' },
+  { title: 'Bretton Woods / Mt. Washington', meta: '45 min drive', hook: 'The Omni Mount Washington Resort, the Cog Railway, the Auto Road \u2014 all within an hour.' },
+  { title: 'Moose Alley (Pittsburg)', meta: '90 min drive', hook: 'Worth the drive. Moose sightings almost guaranteed.' },
+];
+
+const seasons = [
+  { name: 'Fall', color: 'from-fox-red via-fox-orange to-deep-red', blurb: 'Fall in the North Country hits different. Book your leaf-peeping basecamp.' },
+  { name: 'Winter', color: 'from-night via-fox-brown to-forest-green', blurb: 'Park your sled at your door. Warm up at the bar. Repeat.' },
+  { name: 'Summer', color: 'from-forest-green via-forest-sage to-fox-amber', blurb: 'Hike a 4,000-footer. Tube the Israel River. End the day at Copper Pig.' },
+  { name: 'Spring', color: 'from-warm-gray via-forest-sage to-fox-cream', blurb: 'Mud season is for locals. And for guests who know where to find the quiet.' },
+];
 ---
 <BaseLayout
-  title="Red Fox Inn — Lancaster, New Hampshire | White Mountains Lodging"
-  description="A 27-room independently operated inn on Main Street in Lancaster, NH. Between the White Mountain National Forest and the Connecticut River."
+  title="Red Fox Inn \u2014 Hotel in Lancaster, NH | White Mountains Lodging"
+  description="A 27-room inn on Main Street in Lancaster, NH. Park at your door. Walk to everything. In the heart of downtown Lancaster, in the gateway to the White Mountains."
+  transparentHeader
 >
   <main>
-    <section class="relative min-h-[85vh] flex items-center justify-center px-6 bg-fox-brown text-snow">
-      <div class="max-w-4xl text-center py-24">
-        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">
-          Lancaster, New Hampshire &middot; Chartered 1763
+
+    <!-- ==== Section 1 — Hero ==== -->
+    <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden text-snow -mt-[88px] pt-[88px]">
+      <!-- Placeholder background (swap for hero photo per Section 7) -->
+      <div class="absolute inset-0 bg-gradient-to-br from-night via-fox-brown to-deep-red/80"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(28,20,16,0.6)_100%)]"></div>
+
+      <div class="relative z-10 w-full max-w-5xl mx-auto px-6 text-center py-24">
+        <p class="font-body text-[0.7rem] md:text-xs uppercase tracking-[0.4em] text-fox-orange mb-8 font-medium">
+          Lancaster, New Hampshire &middot; Est. 1955
         </p>
-        <h1 class="font-display font-light text-5xl md:text-7xl leading-[1.05] mb-8 text-snow">
-          A new chapter<br />on an old road.
+        <h1 class="font-display font-light text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] mb-10 text-snow">
+          Where the North Woods<br />welcome you home.
         </h1>
-        <p class="font-body text-lg md:text-xl text-fox-cream max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-          Twenty-seven rooms on Main Street, three blocks from a 1913 bronze fox, and five minutes from the mountain a boy from this town protected for the rest of us.
+        <p class="font-body font-light text-lg md:text-xl text-fox-cream max-w-2xl mx-auto mb-12 leading-relaxed">
+          27 rooms on Main Street. Park at your door. Walk to everything.<br class="hidden md:block" />
+          In the heart of downtown Lancaster, New Hampshire.
         </p>
-        <a
-          href="#book"
-          class="font-body inline-block px-10 py-3.5 bg-fox-red text-snow font-medium tracking-wide hover:bg-deep-red transition-colors"
-        >
-          Check Availability
-        </a>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/book/" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+            Check Availability
+          </a>
+          <a href="/stay/" class="font-body inline-block px-10 py-4 text-snow text-sm font-medium tracking-[0.15em] uppercase border border-fox-cream/40 hover:bg-fox-cream/10 hover:border-fox-cream transition-colors">
+            Explore Rooms
+          </a>
+        </div>
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 font-body text-[0.65rem] uppercase tracking-[0.35em] text-fox-cream/60">
+        <span class="inline-block">Scroll</span>
       </div>
     </section>
 
-    <section class="px-6 py-28 bg-snow">
+
+    <!-- ==== Section 2 — Welcome Strip ==== -->
+    <section class="px-6 py-16 md:py-24 bg-snow">
       <div class="max-w-3xl mx-auto text-center">
-        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">The Story</p>
-        <h2 class="font-display font-light text-4xl md:text-5xl mb-10 leading-[1.1]">
-          Clever, caring, independent,<br />and at home with the wild.
-        </h2>
-        <p class="font-body text-lg text-warm-gray leading-relaxed mb-6 font-light">
-          When Lancaster turned 150 in 1913, the town commissioned a bronze fox from <em class="font-display text-fox-brown">Anna Vaughn Hyatt Huntington</em> &mdash; the same sculptor whose Joan of Arc stands in Riverside Park and whose El Cid guards the Hispanic Society in Manhattan.
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-8 font-medium">
+          Where we come from
         </p>
-        <p class="font-body text-lg text-warm-gray leading-relaxed font-light">
-          It still rests in Centennial Park at Main and School, three blocks from our front door. We borrowed our name from it.
+        <p class="font-display font-light italic text-2xl md:text-3xl lg:text-[2rem] leading-[1.4] text-fox-brown">
+          &ldquo;In 1913, Lancaster commissioned sculptor Anna Hyatt Huntington to cast a fox in bronze for the town&rsquo;s 150th birthday. It still sits in Centennial Park, three blocks from our front door. The town chose the fox for what it represents: clever, caring, independent, and at home with the wild. We chose it for the same reason.&rdquo;
         </p>
-        <a
-          href="/story/"
-          class="font-body inline-block mt-10 text-sm uppercase tracking-[0.2em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors"
-        >
-          Read the full story
+      </div>
+
+      <div class="max-w-5xl mx-auto mt-16 md:mt-20 grid md:grid-cols-3 gap-10 md:gap-6">
+        <div class="text-center px-4">
+          <p class="text-4xl mb-4" aria-hidden="true">🦊</p>
+          <p class="font-display font-light text-2xl mb-3 text-fox-red">Clever</p>
+          <p class="font-body font-light text-base text-warm-gray leading-relaxed">
+            Park your car, bike, ATV, or snowmobile right at your door.
+          </p>
+        </div>
+        <div class="text-center px-4">
+          <p class="text-4xl mb-4" aria-hidden="true">🌲</p>
+          <p class="font-display font-light text-2xl mb-3 text-forest-green">Independent</p>
+          <p class="font-body font-light text-base text-warm-gray leading-relaxed">
+            Family-operated. Three properties across New England. Over eight years in hospitality.
+          </p>
+        </div>
+        <div class="text-center px-4">
+          <p class="text-4xl mb-4" aria-hidden="true">🏔️</p>
+          <p class="font-display font-light text-2xl mb-3 text-fox-orange">At Home</p>
+          <p class="font-body font-light text-base text-warm-gray leading-relaxed">
+            Steps from the best restaurants, shops, and trails in the White Mountains.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==== Section 3 — Rooms Preview ==== -->
+    <section class="px-6 py-16 md:py-24 bg-fox-cream">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14 md:mb-20">
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Rooms &amp; Suites</p>
+          <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 max-w-3xl mx-auto">
+            Six ways to stay.<br />Every one right on Main Street.
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {rooms.map((r) => (
+            <a
+              href={`/stay/${r.slug}/`}
+              class="group block relative aspect-[4/5] overflow-hidden"
+            >
+              <div class={`absolute inset-0 bg-gradient-to-br ${r.gradient} transition-transform duration-700 group-hover:scale-[1.04]`}></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-night/70 via-night/10 to-transparent"></div>
+              <div class="relative z-10 h-full flex flex-col justify-end p-8">
+                <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-amber mb-3 font-medium">
+                  {r.slug === 'retro-suite' ? 'Suite' : r.slug.startsWith('extended') ? 'Extended Stay' : 'Room'}
+                </p>
+                <h3 class="font-display font-light text-3xl md:text-4xl text-snow mb-3 leading-tight">
+                  {r.name}
+                </h3>
+                <p class="font-body font-light text-sm text-fox-cream/90 leading-relaxed mb-5 max-w-sm">
+                  {r.descriptor}
+                </p>
+                <p class="font-body text-xs uppercase tracking-[0.25em] text-snow group-hover:text-fox-amber transition-colors font-medium">
+                  View Room &rarr;
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="text-center mt-14">
+          <a href="/stay/" class="font-body inline-block text-sm uppercase tracking-[0.25em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors">
+            See All Rooms &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==== Section 4 — Why Red Fox Inn ==== -->
+    <section class="px-6 py-16 md:py-24 bg-snow">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Why Red Fox Inn</p>
+          <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] max-w-3xl mx-auto">
+            Four reasons we&rsquo;re the best<br />small inn in the North Country.
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 md:gap-14 max-w-6xl mx-auto">
+          <div class="border-t border-fox-orange/60 pt-8">
+            <p class="font-display font-light text-5xl text-fox-red mb-4">01</p>
+            <h3 class="font-display font-light text-2xl md:text-3xl mb-4 leading-tight">Smack dab downtown</h3>
+            <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed">
+              Walk to Polish Princess Bakery, Copper Pig Brewery, Granite Grind, Scorpio&rsquo;s, and the Rialto Theatre. No car needed once you&rsquo;re parked.
+            </p>
+          </div>
+          <div class="border-t border-fox-orange/60 pt-8">
+            <p class="font-display font-light text-5xl text-fox-red mb-4">02</p>
+            <h3 class="font-display font-light text-2xl md:text-3xl mb-4 leading-tight">Trail-ready</h3>
+            <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed">
+              Ride the Wilds ATV network. Snowmobile from your door. Hike Mt. Prospect in five minutes. Santa&rsquo;s Village in fifteen.
+            </p>
+          </div>
+          <div class="border-t border-fox-orange/60 pt-8">
+            <p class="font-display font-light text-5xl text-fox-red mb-4">03</p>
+            <h3 class="font-display font-light text-2xl md:text-3xl mb-4 leading-tight">The Compass Rose &amp; Waypoint</h3>
+            <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed">
+              Our cocktail bar serves classics in a speakeasy setting. The cigar lounge has a walk-in humidor and premium sticks.
+            </p>
+          </div>
+          <div class="border-t border-fox-orange/60 pt-8">
+            <p class="font-display font-light text-5xl text-fox-red mb-4">04</p>
+            <h3 class="font-display font-light text-2xl md:text-3xl mb-4 leading-tight">Events &amp; gatherings</h3>
+            <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed">
+              The Steepleview Room seats 50. The banquet hall holds 125+. Weddings, reunions, conferences &mdash; we host it all.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==== Section 5 — Experience Lancaster (horizontal scroll) ==== -->
+    <section class="py-16 md:py-24 bg-fox-cream">
+      <div class="max-w-7xl mx-auto px-6 mb-10 md:mb-14">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Experience Lancaster</p>
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] max-w-2xl">
+            Twelve miles in any direction,<br />there&rsquo;s something to do.
+          </h2>
+          <a href="/experience/" class="font-body text-xs uppercase tracking-[0.25em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors self-start md:self-auto">
+            Explore the Area &rarr;
+          </a>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+        <div class="flex gap-5 md:gap-6 px-6 max-w-7xl mx-auto pb-4">
+          {experiences.map((e) => (
+            <div class="flex-shrink-0 w-[280px] md:w-[340px] snap-start bg-snow border-t border-fox-orange">
+              <div class="aspect-[4/3] bg-gradient-to-br from-fox-brown via-fox-red/80 to-fox-orange"></div>
+              <div class="p-6 md:p-8">
+                <p class="font-body text-[0.7rem] uppercase tracking-[0.3em] text-fox-orange mb-3 font-medium">{e.meta}</p>
+                <h3 class="font-display font-light text-2xl md:text-3xl leading-tight mb-4">{e.title}</h3>
+                <p class="font-body font-light text-sm md:text-base text-warm-gray leading-relaxed">{e.hook}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==== Section 6 — Seasonal band ==== -->
+    <section class="bg-snow">
+      <div class="grid md:grid-cols-2">
+        {seasons.map((s) => (
+          <div class={`relative min-h-[340px] md:min-h-[400px] bg-gradient-to-br ${s.color} flex items-end p-8 md:p-10 overflow-hidden`}>
+            <div class="absolute inset-0 bg-gradient-to-t from-night/50 via-transparent to-transparent"></div>
+            <div class="relative z-10 text-snow max-w-md">
+              <p class="font-body text-xs uppercase tracking-[0.35em] text-fox-amber mb-3 font-medium">{s.name}</p>
+              <p class="font-display font-light italic text-2xl md:text-3xl leading-snug">{s.blurb}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+
+    <!-- ==== Section 7 — Bar & Lounge split ==== -->
+    <section class="bg-night text-snow">
+      <div class="grid md:grid-cols-2">
+        <a href="/bar/" class="group relative px-8 py-20 md:p-16 lg:p-20 border-b md:border-b-0 md:border-r border-fox-brown/60 hover:bg-fox-brown/30 transition-colors">
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">The Compass Rose</p>
+          <h3 class="font-display font-light text-4xl md:text-5xl leading-tight mb-6">Cocktails, jazz,<br />velvet chairs.</h3>
+          <p class="font-body font-light italic text-base md:text-lg text-fox-cream/90 leading-relaxed mb-8 max-w-md">
+            From martinis to Manhattans, our classic cocktails harken to the gilded days of Gatsby and the speakeasy hideaways of Prohibition.
+          </p>
+          <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-amber font-medium group-hover:text-snow transition-colors">
+            Visit the Compass Rose &rarr;
+          </p>
+        </a>
+        <a href="/lounge/" class="group relative px-8 py-20 md:p-16 lg:p-20 hover:bg-fox-brown/30 transition-colors">
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">The Waypoint</p>
+          <h3 class="font-display font-light text-4xl md:text-5xl leading-tight mb-6">Leather chairs,<br />top-shelf bourbon.</h3>
+          <p class="font-body font-light italic text-base md:text-lg text-fox-cream/90 leading-relaxed mb-8 max-w-md">
+            Quality sticks from Drew Estate, Dunbarton, My Father&rsquo;s Promise, Ashton, Rocky Patel, A. Fuente, and Perdomo. Settle into leather with a top-shelf bourbon.
+          </p>
+          <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-amber font-medium group-hover:text-snow transition-colors">
+            Visit the Waypoint &rarr;
+          </p>
         </a>
       </div>
     </section>
 
-    <section class="px-6 py-28 bg-fox-cream">
-      <div class="max-w-5xl mx-auto">
-        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 text-center font-medium">Experience</p>
-        <h2 class="font-display font-light text-4xl md:text-5xl mb-14 text-center leading-[1.1]">
-          The White Mountains<br />from Main Street.
+
+    <!-- ==== Section 8 — Events callout ==== -->
+    <section class="px-6 py-16 md:py-24 bg-fox-cream">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Gather &amp; Events</p>
+        <h2 class="font-display font-light italic text-4xl md:text-6xl leading-[1.1] mb-10">
+          Your party&rsquo;s over here.
         </h2>
-        <div class="grid md:grid-cols-3 gap-12">
-          <div>
-            <p class="font-display font-light text-3xl mb-2 text-fox-red">5 min</p>
-            <p class="font-body uppercase tracking-[0.15em] text-xs text-fox-orange mb-3 font-medium">Weeks State Park</p>
-            <p class="font-body text-warm-gray leading-relaxed font-light">The 1912 fieldstone lodge of the senator who wrote the act that created the White Mountain National Forest.</p>
-          </div>
-          <div>
-            <p class="font-display font-light text-3xl mb-2 text-fox-red">15 min</p>
-            <p class="font-body uppercase tracking-[0.15em] text-xs text-fox-orange mb-3 font-medium">Santa's Village</p>
-            <p class="font-body text-warm-gray leading-relaxed font-light">A working Christmas park since 1953. One of the few places in New England that still feels exactly like it did when it opened.</p>
-          </div>
-          <div>
-            <p class="font-display font-light text-3xl mb-2 text-fox-red">45 min</p>
-            <p class="font-body uppercase tracking-[0.15em] text-xs text-fox-orange mb-3 font-medium">Bretton Woods</p>
-            <p class="font-body text-warm-gray leading-relaxed font-light">Omni Mount Washington Resort, Cog Railway, and the notch where Franconia opens to Cannon.</p>
-          </div>
-        </div>
+        <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed mb-10 max-w-2xl mx-auto">
+          The Lancaster Motel has been the best place in town to host events since the 1950s. Red Fox Inn continues that tradition. The Retro Room, Compass Rose, Waypoint Lounge, and upstairs Steepleview Room are available for small gatherings. The banquet room handles 125+ guests &mdash; weddings, reunions, conferences, holiday parties.
+        </p>
+        <a href="/gather/" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+          Plan Your Event
+        </a>
       </div>
     </section>
 
-    <footer class="px-6 py-20 bg-night text-fox-cream text-sm">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
-        <div>
-          <p class="font-display font-light text-3xl text-snow mb-4">Red Fox Inn</p>
-          <p class="font-body leading-relaxed font-light">
-            112 Main Street<br />Lancaster, NH 03584
-          </p>
-          <p class="font-body mt-4">
-            <a href="tel:+16037884921" class="hover:text-fox-amber transition-colors">(603) 788&#8209;4921</a>
-          </p>
-          <p class="font-body">
-            <a href="mailto:stay@redfoxinnnh.com" class="hover:text-fox-amber transition-colors">stay@redfoxinnnh.com</a>
-          </p>
-        </div>
-        <div>
-          <p class="font-body uppercase text-xs tracking-[0.2em] text-fox-orange mb-4 font-medium">Visit</p>
-          <ul class="font-body space-y-2 font-light">
-            <li><a href="/stay/" class="hover:text-snow transition-colors">Stay</a></li>
-            <li><a href="/experience/" class="hover:text-snow transition-colors">Experience</a></li>
-            <li><a href="/journal/" class="hover:text-snow transition-colors">Journal</a></li>
-            <li><a href="/story/" class="hover:text-snow transition-colors">Story</a></li>
-            <li><a href="/policies/" class="hover:text-snow transition-colors">Policies</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-body uppercase text-xs tracking-[0.2em] text-fox-orange mb-4 font-medium">The fine print</p>
-          <p class="font-body leading-relaxed font-light">
-            A 27-room independent inn in Coös County, New Hampshire. Between the White Mountain National Forest and the Connecticut River.
-          </p>
-        </div>
+
+    <!-- ==== Section 9 — Extended Stay callout ==== -->
+    <section class="px-6 py-16 md:py-24 bg-fox-brown text-snow">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">Extended Stay</p>
+        <h2 class="font-display font-light italic text-4xl md:text-6xl leading-[1.1] mb-10 text-snow">
+          Staying longer?<br />We built rates around you.
+        </h2>
+        <p class="font-body font-light text-base md:text-lg text-fox-cream leading-relaxed mb-10 max-w-2xl mx-auto">
+          Fully remodeled units with private entrances, full kitchens, living rooms, and free on-site laundry. Perfect for traveling medical professionals, contractors, or anyone who wants their own place in the North Country.
+        </p>
+        <a href="/stay/extended-ground/" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+          Extended Stay Options
+        </a>
       </div>
-    </footer>
+    </section>
+
   </main>
 </BaseLayout>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>

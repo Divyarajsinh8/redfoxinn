@@ -1,0 +1,105 @@
+---
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
+---
+<header
+  id="siteHeader"
+  class:list={[
+    'sticky top-0 z-50 transition-all duration-300 text-snow',
+    transparent ? 'bg-night/40 backdrop-blur-sm' : 'bg-night',
+  ]}
+  data-transparent={transparent}
+>
+  <div id="siteHeaderInner" class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between transition-all duration-300">
+    <a href="/" class="font-display font-light text-2xl md:text-3xl tracking-tight hover:text-fox-amber transition-colors">
+      Red Fox Inn
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-10 font-body text-xs uppercase tracking-[0.22em] font-medium">
+      <a href="/stay/" class="hover:text-fox-amber transition-colors">Stay</a>
+      <a href="/experience/" class="hover:text-fox-amber transition-colors">Experience</a>
+      <a href="/gather/" class="hover:text-fox-amber transition-colors">Gather</a>
+      <a href="/bar/" class="hover:text-fox-amber transition-colors">Bar</a>
+      <a href="/story/" class="hover:text-fox-amber transition-colors">Story</a>
+    </nav>
+
+    <div class="flex items-center gap-4 md:gap-6">
+      <a href="tel:+16037884921" class="hidden md:inline font-body text-sm tracking-wide hover:text-fox-amber transition-colors">
+        (603) 788&#8209;4921
+      </a>
+      <a href="/book/" class="font-body inline-block px-5 py-2 md:px-6 md:py-2.5 bg-fox-red text-snow text-xs md:text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+        Book&nbsp;Now
+      </a>
+      <button id="mobileMenuToggle" class="lg:hidden text-snow p-1 -mr-1" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-night text-snow hidden flex-col">
+  <div class="flex items-center justify-between px-6 py-6">
+    <a href="/" class="font-display font-light text-2xl">Red Fox Inn</a>
+    <button id="mobileMenuClose" class="text-snow p-1 -mr-1" aria-label="Close menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <nav class="flex-1 flex flex-col items-center justify-center gap-7 font-display font-light text-4xl md:text-5xl">
+    <a href="/stay/" class="hover:text-fox-orange transition-colors">Stay</a>
+    <a href="/experience/" class="hover:text-fox-orange transition-colors">Experience</a>
+    <a href="/gather/" class="hover:text-fox-orange transition-colors">Gather</a>
+    <a href="/bar/" class="hover:text-fox-orange transition-colors">Bar</a>
+    <a href="/lounge/" class="hover:text-fox-orange transition-colors">Lounge</a>
+    <a href="/story/" class="hover:text-fox-orange transition-colors">Story</a>
+    <a href="/journal/" class="hover:text-fox-orange transition-colors">Journal</a>
+    <a href="/contact/" class="hover:text-fox-orange transition-colors">Contact</a>
+  </nav>
+  <div class="px-6 py-8 text-center border-t border-fox-brown/50">
+    <a href="tel:+16037884921" class="font-body text-base tracking-wide hover:text-fox-amber transition-colors">(603) 788&#8209;4921</a>
+    <p class="font-body text-xs text-fox-cream/60 mt-2 font-light">112 Main Street &middot; Lancaster, NH</p>
+  </div>
+</div>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const inner = document.getElementById('siteHeaderInner');
+  const toggle = document.getElementById('mobileMenuToggle');
+  const closeBtn = document.getElementById('mobileMenuClose');
+  const menu = document.getElementById('mobileMenu');
+  const isTransparent = header?.dataset.transparent === 'true';
+
+  const onScroll = () => {
+    if (!header || !inner) return;
+    const scrolled = window.scrollY > 40;
+    inner.classList.toggle('py-6', !scrolled);
+    inner.classList.toggle('py-3', scrolled);
+    if (isTransparent) {
+      header.classList.toggle('bg-night/40', !scrolled);
+      header.classList.toggle('bg-night', scrolled);
+      header.classList.toggle('shadow-[0_4px_20px_rgba(0,0,0,0.3)]', scrolled);
+    } else {
+      header.classList.toggle('shadow-[0_4px_20px_rgba(0,0,0,0.3)]', scrolled);
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const openMenu = () => {
+    menu?.classList.remove('hidden');
+    menu?.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeMenu = () => {
+    menu?.classList.add('hidden');
+    menu?.classList.remove('flex');
+    document.body.style.overflow = '';
+  };
+  toggle?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+</script>
