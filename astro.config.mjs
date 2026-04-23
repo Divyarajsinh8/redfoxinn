@@ -6,9 +6,12 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://redfoxinnnh.com',
+
   integrations: [
     sanity({
       projectId: 'ug6dnpcr',
@@ -21,7 +24,10 @@ export default defineConfig({
     mdx(),
     sitemap(),
   ],
+
   vite: {
     plugins: [tailwindcss()],
   },
+
+  adapter: vercel(),
 });
