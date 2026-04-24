@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="The Compass Rose Cocktail Bar &mdash; Red Fox Inn, Lancaster NH"
+  description="Classic cocktails, jazz, and velvet chairs in the North Country. The definitive cocktail bar experience at Red Fox Inn in Lancaster, New Hampshire."
+  transparentHeader
+>
+  <main>
+
+    <!-- Hero -->
+    <section class="relative bg-night text-snow px-6 py-40 md:py-56 overflow-hidden -mt-[88px] pt-[160px] md:pt-[200px]">
+      <div class="absolute inset-0 bg-gradient-to-br from-night via-deep-red/40 to-fox-brown"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(28,20,16,0.85)_100%)]"></div>
+      <div class="relative z-10 max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-10 font-medium">
+          The Bar
+        </p>
+        <h1 class="font-display font-light text-5xl md:text-7xl lg:text-[6rem] leading-[1.05] mb-10 text-snow">
+          The<br />Compass Rose.
+        </h1>
+        <p class="font-display font-light italic text-xl md:text-2xl text-fox-amber max-w-3xl mx-auto leading-[1.5]">
+          The definitive cocktail bar experience in the North Country.
+        </p>
+      </div>
+    </section>
+
+    <!-- Copy -->
+    <section class="bg-snow px-6 py-24 md:py-32">
+      <div class="max-w-3xl mx-auto">
+        <div class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75] space-y-8">
+          <p>
+            From martinis to Manhattans, our classic cocktails harken to the gilded days of Gatsby and the speakeasy hideaways of Prohibition. Unwind in the velvet and jazz ambiance.
+          </p>
+          <p>
+            Sink into a deep blue velvet chair as the jazz-infused music plays while you enjoy a liquid work of art from our signature cocktail menu. Let the live music tickle your ears on weekends for a date night to remember.
+          </p>
+          <p>
+            Peruse our walk-in cigar humidor and select a premium cigar to finish the evening. Then head into <a href="/lounge/" class="text-fox-red border-b border-fox-orange hover:text-deep-red hover:border-deep-red transition-colors">The Waypoint Cigar Lounge</a> with your newfound gem.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pull quote -->
+      <div class="max-w-5xl mx-auto mt-20 md:mt-24 px-6 text-center">
+        <p class="font-display font-light italic text-fox-red text-3xl md:text-5xl lg:text-6xl leading-[1.2]">
+          &ldquo;From martinis to Manhattans,<br />our cocktails harken to the gilded days<br />of Gatsby and Prohibition.&rdquo;
+        </p>
+      </div>
+    </section>
+
+    <!-- Hours -->
+    <section class="bg-fox-cream px-6 py-20 md:py-24">
+      <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
+        <div>
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">Hours</p>
+          <p class="font-display font-light text-2xl md:text-3xl leading-snug text-fox-brown mb-3">Thursday &ndash; Monday</p>
+          <p class="font-body font-light text-lg text-warm-gray">Evenings. Call for current schedule.</p>
+          <p class="font-body text-xs uppercase tracking-[0.2em] text-warm-gray mt-6 font-medium">21+ only</p>
+        </div>
+        <div>
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">Find Us</p>
+          <p class="font-body font-light text-lg text-fox-brown leading-relaxed">
+            Inside Red Fox Inn<br />112 Main Street<br />Lancaster, NH 03584
+          </p>
+          <p class="font-body text-sm mt-4">
+            <a href="tel:+16037884921" class="text-fox-red hover:text-deep-red border-b border-fox-orange">(603) 788&#8209;4921</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cross-sell to Lounge -->
+    <section class="bg-fox-brown text-snow px-6 py-20 md:py-28">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">Next Door</p>
+        <h2 class="font-display font-light italic text-3xl md:text-5xl leading-[1.15] mb-8 text-snow">
+          Finish the evening<br />at The Waypoint.
+        </h2>
+        <p class="font-body font-light text-base md:text-lg text-fox-cream leading-relaxed mb-10 max-w-xl mx-auto">
+          Our cigar lounge next door &mdash; leather chairs, top-shelf bourbon, and a walk-in humidor stocked with Drew Estate, Ashton, Rocky Patel, Fuente, and more.
+        </p>
+        <a href="/lounge/" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+          Visit the Waypoint
+        </a>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

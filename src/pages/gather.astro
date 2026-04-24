@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const spaces = [
+  { name: 'The Retro Room', detail: 'Intimate gatherings and meetings. The original 1950s Retro Room, updated for small groups.' },
+  { name: 'The Compass Rose', detail: 'Speakeasy atmosphere, craft cocktails, velvet chairs. Perfect for rehearsal dinners and small receptions.' },
+  { name: 'The Waypoint', detail: 'Leather chairs, walk-in humidor, premium spirits. A cigar-and-bourbon finish for any celebration.' },
+  { name: 'The Steepleview Room', detail: 'Upstairs. Seats 50. Views of Lancaster\u2019s famous church steeples.' },
+  { name: 'The Banquet Room', detail: '125+ guests. Weddings, anniversaries, conferences, holiday parties.' },
+];
+
+const events = [
+  'Weddings',
+  'Rehearsal dinners',
+  'Retirement celebrations',
+  'Graduation parties',
+  'Conferences',
+  'Educational seminars',
+  'Corporate retreats',
+  'Holiday parties',
+  'Family reunions',
+];
+
+const weddingTerms = [
+  'Full property buyout available to guarantee rooms \u2014 24 rooms (extended stay units are separate).',
+  '20% deposit at booking. Remainder due 4 weeks before check-in.',
+  '8-week cancellation policy with a tiered refund schedule.',
+  'All events requiring food must use a licensed, insured caterer.',
+];
+---
+<BaseLayout
+  title="Events, Weddings &amp; Group Bookings &mdash; Red Fox Inn"
+  description="Red Fox Inn has been the best place in Lancaster, NH to host events since the 1950s. Weddings, reunions, conferences, holiday parties. Spaces for 10 to 125+."
+  transparentHeader
+>
+  <main>
+
+    <!-- Hero -->
+    <section class="relative bg-fox-brown text-snow px-6 py-40 md:py-56 overflow-hidden -mt-[88px] pt-[160px] md:pt-[200px]">
+      <div class="absolute inset-0 bg-gradient-to-br from-fox-brown via-deep-red/60 to-fox-red/40"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_30%,rgba(28,20,16,0.75)_100%)]"></div>
+      <div class="relative z-10 max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-10 font-medium">
+          Gather &amp; Events
+        </p>
+        <h1 class="font-display font-light italic text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] mb-10 text-snow">
+          Your party&rsquo;s<br />over here.
+        </h1>
+        <p class="font-display font-light text-xl md:text-2xl text-fox-amber max-w-3xl mx-auto leading-[1.5]">
+          Red Fox Inn has been the best place in town to host events since the 1950s. We&rsquo;re continuing the tradition.
+        </p>
+      </div>
+    </section>
+
+    <!-- It's like finding a unicorn -->
+    <section class="bg-snow px-6 py-24 md:py-32">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Our Spaces</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-10">One building. Five rooms. No rain plan required.</h2>
+        <p class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75]">
+          It&rsquo;s like discovering a unicorn. We&rsquo;re on both Routes 2 &amp; 3 in the center of Lancaster. Our building has two wings of rooms connected by the motel lobby. Once inside the lobby, you do <strong class="font-body font-medium">not</strong> have to go outside to get to the event spaces.
+        </p>
+      </div>
+    </section>
+
+    <!-- The 5 spaces -->
+    <section class="bg-fox-cream px-6 py-20 md:py-28">
+      <div class="max-w-5xl mx-auto">
+        <div class="divide-y divide-fox-orange/50 border-t border-b border-fox-orange/50">
+          {spaces.map((s, i) => (
+            <div class="grid md:grid-cols-[auto_1fr_2fr] gap-4 md:gap-10 py-8 md:py-10 items-baseline">
+              <p class="font-display font-light text-3xl md:text-4xl text-fox-red">0{i + 1}</p>
+              <h3 class="font-display font-light text-2xl md:text-3xl leading-tight text-fox-brown">{s.name}</h3>
+              <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed">{s.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Events we host -->
+    <section class="bg-snow px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Events We Host</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-10">From a rehearsal dinner to 125 wedding guests.</h2>
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-3">
+          {events.map((e) => (
+            <span class="font-display font-light text-xl md:text-2xl text-fox-brown">{e}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Wedding groups -->
+    <section class="bg-fox-brown text-snow px-6 py-20 md:py-28">
+      <div class="max-w-4xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium text-center">Wedding Groups</p>
+        <h2 class="font-display font-light italic text-4xl md:text-5xl leading-[1.1] mb-12 text-center text-snow">
+          Book the whole place.<br />Bring everyone you love.
+        </h2>
+        <ul class="font-body font-light text-base md:text-lg text-fox-cream/90 leading-relaxed space-y-5 max-w-2xl mx-auto">
+          {weddingTerms.map((t) => (
+            <li class="flex items-start gap-4">
+              <span class="text-fox-amber mt-1 flex-shrink-0" aria-hidden="true">&#9671;</span>
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Group bookings callout -->
+    <section class="bg-fox-cream px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Group Bookings</p>
+        <h2 class="font-display font-light italic text-3xl md:text-5xl leading-[1.15] mb-10">More than five rooms?<br />Call us directly.</h2>
+        <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed mb-10 max-w-xl mx-auto">
+          Depending on dates, we can place your rooms together and offer a discount. Group buys on one invoice to qualify.
+        </p>
+        <a href="tel:+16037884921" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+          Call (603) 788&#8209;4921
+        </a>
+        <p class="font-body text-xs uppercase tracking-[0.25em] text-warm-gray mt-6 font-medium">
+          Or email <a href="mailto:stay@redfoxinnnh.com" class="text-fox-red hover:text-deep-red border-b border-fox-orange normal-case tracking-normal">stay@redfoxinnnh.com</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
