@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { rooms } from '../../data/rooms';
+---
+<BaseLayout
+  title="Rooms &amp; Suites &mdash; Red Fox Inn | Lancaster, NH"
+  description="Six ways to stay at Red Fox Inn in Lancaster, NH. Standard and deluxe rooms, a retro suite, and two private extended-stay units with full kitchens."
+  transparentHeader
+>
+  <main>
+
+    <!-- Hero -->
+    <section class="relative bg-fox-brown text-snow px-6 py-32 md:py-44 overflow-hidden -mt-[88px] pt-[140px] md:pt-[180px]">
+      <div class="absolute inset-0 bg-gradient-to-br from-night via-fox-brown to-deep-red/70"></div>
+      <div class="relative z-10 max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-8 font-medium">
+          Rooms &amp; Suites
+        </p>
+        <h1 class="font-display font-light text-5xl md:text-7xl lg:text-[5rem] leading-[1.05] mb-10 text-snow">
+          Six ways to stay.<br />Every one right<br class="hidden md:block" /> on Main Street.
+        </h1>
+      </div>
+    </section>
+
+    <!-- Intro band -->
+    <section class="px-6 py-16 md:py-20 bg-snow">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="font-display font-light italic text-xl md:text-2xl text-fox-brown leading-[1.5]">
+          All rooms at Red Fox Inn include fiber-optic Wi-Fi, flat-screen TV with upgraded cable, individually controlled heat and AC, and a full bath. Our lobby opens at 7:30 AM with complimentary Wayfarer coffee and continental breakfast.
+        </p>
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mt-8 font-medium">
+          Park right at your door.
+        </p>
+      </div>
+    </section>
+
+    <!-- Room grid -->
+    <section class="px-6 py-16 md:py-24 bg-fox-cream">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+          {rooms.map((room) => (
+            <a
+              href={`/stay/${room.slug}/`}
+              class="group block bg-snow overflow-hidden"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden">
+                <div class={`absolute inset-0 bg-gradient-to-br ${room.gradient} transition-transform duration-700 group-hover:scale-[1.04]`}></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-night/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <p class="font-body text-[0.7rem] uppercase tracking-[0.3em] text-fox-amber mb-2 font-medium">{room.category}</p>
+                  <h2 class="font-display font-light text-3xl md:text-4xl text-snow leading-tight">{room.shortName}</h2>
+                </div>
+              </div>
+              <div class="p-6 md:p-8">
+                <p class="font-body font-light text-base md:text-lg text-fox-brown leading-relaxed mb-5">
+                  {room.descriptor}
+                </p>
+                <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-red font-medium group-hover:text-deep-red transition-colors">
+                  View Room &rarr;
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Group booking callout -->
+    <section class="px-6 py-16 md:py-20 bg-fox-brown text-snow">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">More Than Five Rooms?</p>
+        <h2 class="font-display font-light italic text-3xl md:text-5xl leading-[1.15] mb-8 text-snow">
+          Call us. We&rsquo;ll take care of you.
+        </h2>
+        <p class="font-body font-light text-base md:text-lg text-fox-cream leading-relaxed mb-10 max-w-xl mx-auto">
+          Expecting more than 5 rooms? Call us directly. Depending on dates, we can place your rooms together and offer a discount. Group buys on one invoice to qualify.
+        </p>
+        <a href="tel:+16037884921" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+          (603) 788&#8209;4921
+        </a>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { rooms, type Room } from '../../data/rooms';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return rooms.map((room) => ({
+    params: { slug: room.slug },
+    props: { room },
+  }));
+}
+
+interface Props { room: Room }
+const { room } = Astro.props;
+
+const otherRooms = rooms.filter((r) => r.slug !== room.slug).slice(0, 3);
+---
+<BaseLayout
+  title={`${room.name} \u2014 Red Fox Inn | Lancaster, NH`}
+  description={room.descriptor}
+  transparentHeader
+>
+  <main>
+
+    <!-- Hero image / gallery placeholder -->
+    <section class="relative overflow-hidden -mt-[88px] pt-[88px]">
+      <div class={`aspect-[16/9] md:aspect-[21/9] bg-gradient-to-br ${room.gradient}`}></div>
+      <div class="absolute inset-0 pt-[88px] bg-gradient-to-t from-night/70 via-transparent to-night/30"></div>
+      <div class="absolute bottom-0 left-0 right-0 px-6 pb-10 md:pb-14">
+        <div class="max-w-7xl mx-auto text-snow">
+          <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-4 font-medium">
+            {room.category}
+          </p>
+          <h1 class="font-display font-light text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-3xl">
+            {room.name}
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery strip (placeholder — swap for real photos per Section 7) -->
+    <section class="bg-snow">
+      <div class="max-w-7xl mx-auto px-6 py-10 md:py-14">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {[0, 1, 2, 3].map((i) => (
+            <div class={`aspect-square bg-gradient-to-br ${room.gradient} opacity-${80 - i * 15}`}></div>
+          ))}
+        </div>
+        <p class="font-body text-[0.7rem] uppercase tracking-[0.25em] text-warm-gray mt-6 text-center font-medium">
+          Photography coming soon
+        </p>
+      </div>
+    </section>
+
+    <!-- Room detail -->
+    <section class="px-6 py-16 md:py-24 bg-snow">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 md:gap-16">
+
+        <div class="md:col-span-3">
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">
+            About This Room
+          </p>
+          <p class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75] mb-10">
+            {room.description}
+          </p>
+
+          <div class="border-t border-fox-orange/50 pt-8 mt-10">
+            <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">
+              Good to know
+            </p>
+            <p class="font-display font-light italic text-lg md:text-xl text-fox-brown leading-[1.6]">
+              {room.goodToKnow}
+            </p>
+          </div>
+        </div>
+
+        <aside class="md:col-span-2 bg-fox-cream p-8 md:p-10 self-start">
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">What&rsquo;s in this room</p>
+          <ul class="font-body font-light text-sm md:text-base space-y-3 text-fox-brown">
+            {room.included.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="text-fox-orange mt-1 flex-shrink-0" aria-hidden="true">&#9671;</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-8 pt-8 border-t border-fox-orange/40">
+            <p class="font-body text-xs uppercase tracking-[0.25em] text-warm-gray mb-2 font-medium">Sleeps</p>
+            <p class="font-display font-light text-xl text-fox-brown">{room.sleeps}</p>
+          </div>
+
+          <div class="mt-8 flex flex-col gap-3">
+            {room.callDirectOnly ? (
+              <a href="tel:+16037884921" class="font-body block text-center px-6 py-3.5 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+                Call to Book &middot; (603) 788&#8209;4921
+              </a>
+            ) : (
+              <a href="/book/" class="font-body block text-center px-6 py-3.5 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+                Check Availability
+              </a>
+            )}
+            <a href="tel:+16037884921" class="font-body block text-center px-6 py-3 text-fox-brown text-sm tracking-wide border border-fox-brown/30 hover:bg-fox-cream/80 hover:border-fox-brown/60 transition-colors">
+              Or call (603) 788&#8209;4921
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- Other rooms -->
+    <section class="px-6 py-16 md:py-20 bg-fox-cream">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <h2 class="font-display font-light text-3xl md:text-4xl leading-tight">Other ways to stay</h2>
+          <a href="/stay/" class="font-body text-xs uppercase tracking-[0.25em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors self-start md:self-auto">
+            All rooms &rarr;
+          </a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+          {otherRooms.map((other) => (
+            <a href={`/stay/${other.slug}/`} class="group block bg-snow">
+              <div class="relative aspect-[4/3] overflow-hidden">
+                <div class={`absolute inset-0 bg-gradient-to-br ${other.gradient} transition-transform duration-700 group-hover:scale-[1.04]`}></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-night/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-5">
+                  <p class="font-body text-[0.65rem] uppercase tracking-[0.3em] text-fox-amber mb-1 font-medium">{other.category}</p>
+                  <p class="font-display font-light text-2xl text-snow">{other.shortName}</p>
+                </div>
+              </div>
+              <div class="p-5">
+                <p class="font-body font-light text-sm text-fox-brown leading-relaxed">{other.descriptor}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
