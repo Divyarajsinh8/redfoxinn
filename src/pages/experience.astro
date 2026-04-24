@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const summerFall = [
+  { name: 'Climb a 4,000-Footer', detail: 'The nearby Presidential Range boasts several. Mt. Waumbek (4,006 ft) is 15 minutes away. Caps Ridge Trail on Mt. Jefferson is the highest road-accessible trailhead in NH.' },
+  { name: 'Hike Mt. Prospect', detail: '5 minutes away. Easy day trip. 360\u00b0 view from Weeks State Park fire tower. Drive or hike up.' },
+  { name: 'Ride a Bike', detail: 'There\u2019s a reason you see so many bikes and motorcycles \u2014 amazing scenic rides. Launch your day trip right from your door.' },
+  { name: 'Tube Israel\u2019s River', detail: 'Free float lazy river style. Or just watch the river go by at Copper Pig Brewery over award-winning craft suds.' },
+  { name: 'Kayak the Connecticut River', detail: 'Deep and wide. Smooth sailing on the water that starts near Canada and ends in Long Island Sound.' },
+  { name: 'Go Fly-Fishing', detail: 'Well-stocked NH rivers right down the street. The Welcome Center behind the motel has info on seasonal guides.' },
+  { name: 'Ride the Wilds ATV', detail: '1,000+ miles of interconnected ATV trails \u2014 the Northeast\u2019s largest network. Lancaster permits ATVs on town streets. Park your ATV at your door.' },
+  { name: 'Make a Splash', detail: 'Colonel Town Recreation Center pool \u2014 a couple blocks away. Day pass and a towel, dive right in.' },
+];
+
+const winter = [
+  { name: 'Ski Bretton Woods', detail: '45 minutes. Where Olympian Bode Miller began his dream.' },
+  { name: 'Ski Cannon Mountain', detail: '45 minutes. More challenging terrain. Tram being replaced \u2014 focus on the skiing.' },
+  { name: 'Snowmobile', detail: 'Ride right from your door. Seasonal rentals: 3 months for $3K with your trailer parked at your room 24/7. We support the Snow Drifters club!' },
+  { name: 'Dog Sledding', detail: 'Muddy Paw Sled Dogs in Jefferson. Unique outdoor adventure \u2014 20 minutes away.' },
+  { name: 'Ice Skating', detail: 'Lancaster\u2019s local ice rink, a couple of blocks from the inn.' },
+  { name: 'Crane\u2019s Snowmobile Museum', detail: 'See the evolution of riding from the 1960s Ski-Doo machines to modern sleds.' },
+];
+
+const dayTrips = [
+  { name: 'Santa\u2019s Village', meta: '15 min', detail: 'Where all the action is for kids young and old. Actually worth the price of admission.' },
+  { name: 'Mt. Washington Auto Road', meta: '55 min', detail: 'A once-in-a-lifetime experience for the adventurous driver. Or let one of their professional drivers do it for you.' },
+  { name: 'Mt. Washington Cog Railway', meta: '50 min', detail: 'The world\u2019s first mountain-climbing cog railway, built 1869.' },
+  { name: 'Franconia Notch & Flume Gorge', meta: '45 min', detail: 'Drive through your very own postcard through one of the scenic mountain \u201cnotches.\u201d' },
+  { name: 'Moose Alley (Pittsburg)', meta: '90 min', detail: 'Worth the drive. Moose sightings almost guaranteed.' },
+  { name: 'Stark Covered Bridge', meta: '25 min', detail: 'One of NH\u2019s most photographed covered bridges \u2014 a Paddleford truss from 1862.' },
+];
+
+const eatDrink = [
+  { name: 'Polish Princess Bakery', meta: '1 min walk', detail: 'Artisan breads, pierogi, pastries baked before your eyes.' },
+  { name: 'The Granite Grind', meta: '1 min walk', detail: 'Real American breakfast. Bacon, eggs, toast, pancakes.' },
+  { name: 'Scorpio\u2019s Pizza & Sports Bar', meta: '1 min walk', detail: 'Full menu \u2014 wraps, burgers, soups, sandwiches.' },
+  { name: 'Copper Pig Brewery', meta: '2 min walk', detail: 'Award-winning craft beer + adventurous food in an old bank building on the Israel River.' },
+  { name: 'Smokin\u2019 T\u2019s', meta: '2 min walk', detail: 'BBQ done right.' },
+  { name: 'The Whitefield Inn', meta: '5 mi', detail: 'Excellent comfort food \u2014 the owner regularly breaks into song.' },
+  { name: 'Schilling Beer Co.', meta: '20 min (Littleton)', detail: 'European-style ales in a converted hydroelectric plant.' },
+  { name: 'The Freehouse', meta: '20 min (Littleton)', detail: 'Great brews, local vibe.' },
+  { name: 'Reklis Brewing', meta: '20 min (Bethlehem)', detail: 'Craft brewery with a dialed-in tap list.' },
+];
+---
+<BaseLayout
+  title="Things to Do in Lancaster, NH &mdash; Red Fox Inn"
+  description="Hiking, skiing, ATV trails, covered bridges, Santa's Village, Mt. Washington, Polish Princess Bakery, Copper Pig Brewery. Everything within twelve miles of Red Fox Inn in Lancaster, NH."
+  transparentHeader
+>
+  <main>
+
+    <!-- Hero -->
+    <section class="relative bg-fox-brown text-snow px-6 py-40 md:py-56 overflow-hidden -mt-[88px] pt-[160px] md:pt-[200px]">
+      <div class="absolute inset-0 bg-gradient-to-br from-forest-green via-fox-brown to-deep-red/60"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_30%,rgba(28,20,16,0.7)_100%)]"></div>
+      <div class="relative z-10 max-w-5xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-10 font-medium">
+          Experience Lancaster
+        </p>
+        <h1 class="font-display font-light text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] mb-10 text-snow">
+          Twelve miles in<br />any direction,<br />there&rsquo;s something to do.
+        </h1>
+        <p class="font-body font-light text-lg md:text-xl text-fox-cream max-w-3xl mx-auto leading-[1.6]">
+          Red Fox Inn anchors the center of downtown Lancaster. Everything cool to eat, drink, or do is only a few hundred feet from the motel. You don&rsquo;t need a car once you&rsquo;re parked in front of your room.
+        </p>
+      </div>
+    </section>
+
+    <!-- Walk Out Your Door -->
+    <section class="bg-snow px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Walk Out Your Door</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-10">Main Street is lunch, dinner, a movie, and a beer.</h2>
+        <p class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75]">
+          Walk to the <em class="font-display">Polish Princess Bakery</em> for the tastiest bread and watch it being prepared and baked in an open kitchen. Cross the street to <em class="font-display">The Granite Grind</em> for a hearty American breakfast of bacon, eggs, toast, and pancakes. <em class="font-display">Scorpio\u2019s Pizza &amp; Sports Bar</em> has a full menu of wraps, burgers, soups, and sandwiches. The award-winning <em class="font-display">Copper Pig Brewery</em> is great for a flight or a growler of some of the best brews in the state. Just across the parking lot, the restored <em class="font-display">Rialto Theatre</em> shows the latest movies. Colonel Town Recreation has a playground and pool in the summer.
+        </p>
+      </div>
+    </section>
+
+    <!-- Shop Local -->
+    <section class="bg-fox-cream px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Shop Local</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-10">Small shops, flea markets, and fresh flowers.</h2>
+        <p class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75]">
+          Lancaster has great shops like <em class="font-display">Simon the Tanner</em>, and <em class="font-display">New to You Consignment</em> if you&rsquo;re looking for a bargain. On weekends in the summer, the Lancaster Historical Society hosts a flea market and there&rsquo;s a weekly Farmer&rsquo;s Market packed with fresh food, handmade jewelry, textiles, and woodwork on the Weeks Library common. <em class="font-display">Riff&rsquo;s Flower Shop</em> is the town staple for the freshest and most creative arrangements.
+        </p>
+      </div>
+    </section>
+
+    <!-- Summer & Fall outdoors -->
+    <section class="bg-snow px-6 py-20 md:py-28">
+      <div class="max-w-5xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Outdoors &middot; Summer &amp; Fall</p>
+        <h2 class="font-display font-light text-4xl md:text-6xl leading-[1.1] mb-12 md:mb-16 max-w-3xl">Eight ways to spend a green day.</h2>
+
+        <div class="divide-y divide-fox-orange/50 border-t border-b border-fox-orange/50">
+          {summerFall.map((item) => (
+            <div class="grid md:grid-cols-3 gap-6 md:gap-10 py-7 md:py-9">
+              <div>
+                <h3 class="font-display font-light text-2xl md:text-3xl leading-tight text-fox-brown">{item.name}</h3>
+              </div>
+              <div class="md:col-span-2">
+                <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed">{item.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Winter outdoors -->
+    <section class="bg-night text-snow px-6 py-20 md:py-28">
+      <div class="max-w-5xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">Outdoors &middot; Winter</p>
+        <h2 class="font-display font-light text-4xl md:text-6xl leading-[1.1] mb-12 md:mb-16 max-w-3xl text-snow">Park your sled<br />at your door.</h2>
+
+        <div class="divide-y divide-fox-brown border-t border-b border-fox-brown">
+          {winter.map((item) => (
+            <div class="grid md:grid-cols-3 gap-6 md:gap-10 py-7 md:py-9">
+              <div>
+                <h3 class="font-display font-light text-2xl md:text-3xl leading-tight text-fox-amber">{item.name}</h3>
+              </div>
+              <div class="md:col-span-2">
+                <p class="font-body font-light text-base md:text-lg text-fox-cream/85 leading-relaxed">{item.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Day Trips -->
+    <section class="bg-fox-cream px-6 py-20 md:py-28">
+      <div class="max-w-5xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Day Trips</p>
+        <h2 class="font-display font-light text-4xl md:text-6xl leading-[1.1] mb-12 md:mb-16 max-w-3xl">When you want more<br />than Main Street.</h2>
+
+        <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+          {dayTrips.map((trip) => (
+            <div class="bg-snow p-7 md:p-8">
+              <div class="flex items-baseline justify-between gap-4 mb-3">
+                <h3 class="font-display font-light text-2xl md:text-3xl leading-tight text-fox-brown">{trip.name}</h3>
+                <span class="font-body text-xs uppercase tracking-[0.2em] text-fox-orange font-medium flex-shrink-0">{trip.meta}</span>
+              </div>
+              <p class="font-body font-light text-base text-warm-gray leading-relaxed">{trip.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Art & Culture -->
+    <section class="bg-snow px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Art &amp; Culture</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-10">A vibrant small-town<br />art community.</h2>
+        <p class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75]">
+          Lancaster plays host to a vibrant art community. The <em class="font-display">Wm. Rugh Gallery</em> anchors 1 Middle Street above Copper Pig Brewery with an extensive collection of Ed Widmayer paintings, weavers, quilters, and local artists. <em class="font-display">Cherry Pond</em> fine furniture. <em class="font-display">Garland Mill</em> &mdash; one of the last working water-powered sawmills.
+        </p>
+      </div>
+    </section>
+
+    <!-- Eat & Drink -->
+    <section class="bg-fox-cream px-6 py-20 md:py-28">
+      <div class="max-w-5xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Eat &amp; Drink</p>
+        <h2 class="font-display font-light text-4xl md:text-6xl leading-[1.1] mb-12 md:mb-16 max-w-3xl">Nine places between<br />Main Street and Littleton.</h2>
+
+        <div class="divide-y divide-fox-orange/50 border-t border-b border-fox-orange/50">
+          {eatDrink.map((item) => (
+            <div class="grid md:grid-cols-[1fr_auto] gap-4 md:gap-10 py-6 md:py-7 items-baseline">
+              <div>
+                <h3 class="font-display font-light text-2xl md:text-3xl leading-tight text-fox-brown mb-2">{item.name}</h3>
+                <p class="font-body font-light text-base text-warm-gray leading-relaxed">{item.detail}</p>
+              </div>
+              <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-orange font-medium whitespace-nowrap">{item.meta}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Spa & Wellness -->
+    <section class="bg-snow px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Spa &amp; Wellness</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-10">When you need the quiet.</h2>
+        <p class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75]">
+          Pamper yourself at <em class="font-display">Carlisle Place</em> or <em class="font-display">The Mountain View Grand Spa</em>, both in the Lancaster area. <em class="font-display">Northern Roots Yoga Studio</em> on Elm Street is within walking distance &mdash; ask the front desk for drop-in rates.
+        </p>
+      </div>
+    </section>
+
+    <!-- Rainy Days -->
+    <section class="bg-fox-cream px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Rainy Days</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-10">Wine, popcorn,<br />and a movie.</h2>
+        <p class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75]">
+          The children&rsquo;s library at <em class="font-display">Weeks Memorial Library</em> is a lifesaver! Great programming and fun environment. The restored <em class="font-display">Rialto Theatre</em> is less than a block away &mdash; grab a glass of wine or beer with your popcorn.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-fox-brown text-snow px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display font-light italic text-4xl md:text-5xl leading-[1.15] mb-10 text-snow">
+          Ready to make Lancaster your basecamp?
+        </h2>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/book/" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+            Check Availability
+          </a>
+          <a href="/stay/" class="font-body inline-block px-10 py-4 text-snow text-sm font-medium tracking-[0.15em] uppercase border border-fox-cream/40 hover:bg-fox-cream/10 hover:border-fox-cream transition-colors">
+            Explore Rooms
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
