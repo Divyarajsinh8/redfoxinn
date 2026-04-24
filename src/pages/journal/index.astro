@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getJournalPosts } from '../../sanity/lib/client';
+
+let posts: any[] = [];
+try {
+  posts = (await getJournalPosts()) ?? [];
+} catch {
+  posts = [];
+}
+
+const plannedPosts = [
+  {
+    title: 'Hotels Near Santa\u2019s Village: Your Guide to Staying in Lancaster, NH',
+    excerpt: 'Santa\u2019s Village has been running since 1953. Here\u2019s where to stay, what to bring, and how to do both parks in a weekend.',
+    tag: 'Families',
+  },
+  {
+    title: 'ATV Lodging on Ride the Wilds: Park at Your Door in Lancaster',
+    excerpt: 'The Northeast\u2019s largest ATV network connects to Main Street. Here\u2019s the inn you want as your basecamp.',
+    tag: 'Motorsports',
+  },
+  {
+    title: 'Snowmobile Season in Co\u00f6s County: Where to Stay, Ride, and Warm Up',
+    excerpt: 'Seasonal rentals, trail access, Snow Drifters club, and the three places on Main Street to eat between rides.',
+    tag: 'Winter',
+  },
+  {
+    title: 'The Lancaster Fair: New England\u2019s Oldest Agricultural Tradition',
+    excerpt: 'Running every year since 1870. What to do, where to park, and why we always book out the week before.',
+    tag: 'Events',
+  },
+  {
+    title: '4,000-Footers You Can Hike from Lancaster, NH',
+    excerpt: 'Mt. Waumbek, Mt. Jefferson, and the Presidential Range \u2014 all within 30 minutes of Main Street.',
+    tag: 'Hiking',
+  },
+];
+---
+<BaseLayout
+  title="Journal &mdash; Red Fox Inn | North Country Stories from Lancaster, NH"
+  description="Stories from the North Woods. Things to do, places to eat, trails to ride, and small-town history from Red Fox Inn in Lancaster, NH."
+  transparentHeader
+>
+  <main>
+
+    <!-- Hero -->
+    <section class="relative bg-fox-brown text-snow px-6 py-32 md:py-44 overflow-hidden -mt-[88px] pt-[140px] md:pt-[180px]">
+      <div class="absolute inset-0 bg-gradient-to-br from-forest-green via-fox-brown to-deep-red/50"></div>
+      <div class="relative z-10 max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-10 font-medium">
+          Journal
+        </p>
+        <h1 class="font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-8 text-snow">
+          Stories from<br />the North Woods.
+        </h1>
+        <p class="font-display font-light italic text-xl md:text-2xl text-fox-cream max-w-2xl mx-auto leading-[1.5]">
+          Trail guides, local history, seasonal picks, and the occasional quiet tip from the lobby.
+        </p>
+      </div>
+    </section>
+
+    {posts.length > 0 ? (
+      <section class="bg-snow px-6 py-20 md:py-28">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {posts.map((post: any) => (
+              <a href={`/journal/${post.slug?.current ?? ''}/`} class="group block bg-fox-cream">
+                <div class="aspect-[4/3] bg-gradient-to-br from-fox-brown via-fox-red to-fox-orange"></div>
+                <div class="p-6 md:p-8">
+                  <p class="font-body text-[0.7rem] uppercase tracking-[0.3em] text-fox-orange mb-3 font-medium">
+                    {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''}
+                  </p>
+                  <h2 class="font-display font-light text-2xl md:text-3xl leading-tight mb-4 text-fox-brown group-hover:text-fox-red transition-colors">
+                    {post.title}
+                  </h2>
+                  {post.excerpt && <p class="font-body font-light text-sm text-warm-gray leading-relaxed">{post.excerpt}</p>}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class="bg-snow px-6 py-20 md:py-28">
+        <div class="max-w-5xl mx-auto">
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium text-center">Coming Soon</p>
+          <h2 class="font-display font-light text-3xl md:text-5xl leading-[1.1] mb-4 text-center">First stories are on the way.</h2>
+          <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed text-center mb-16 max-w-2xl mx-auto">
+            The journal hasn&rsquo;t launched yet. Here&rsquo;s what we&rsquo;re writing first.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+            {plannedPosts.map((post) => (
+              <article class="bg-fox-cream p-8 md:p-10">
+                <p class="font-body text-[0.7rem] uppercase tracking-[0.3em] text-fox-orange mb-3 font-medium">{post.tag}</p>
+                <h3 class="font-display font-light text-2xl md:text-3xl leading-tight mb-4 text-fox-brown">{post.title}</h3>
+                <p class="font-body font-light text-sm md:text-base text-warm-gray leading-relaxed">{post.excerpt}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="text-center mt-20">
+            <p class="font-body text-sm text-warm-gray font-light">
+              Want the first posts delivered? Drop us a line at <a href="mailto:stay@redfoxinnnh.com" class="text-fox-red hover:text-deep-red border-b border-fox-orange">stay@redfoxinnnh.com</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+    )}
+
+  </main>
+</BaseLayout>

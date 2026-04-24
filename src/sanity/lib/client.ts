@@ -1,6 +1,11 @@
-import { useSanityClient } from '@sanity/astro';
+import { createClient } from '@sanity/client';
 
-export const sanityClient = useSanityClient();
+export const sanityClient = createClient({
+  projectId: 'ug6dnpcr',
+  dataset: 'production',
+  useCdn: false,
+  apiVersion: '2024-03-12',
+});
 
 export async function getRooms() {
   return sanityClient.fetch(

@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Book a Room &mdash; Red Fox Inn, Lancaster NH"
+  description="Book your stay at Red Fox Inn in Lancaster, NH. 27 rooms on Main Street. Checking availability takes 30 seconds."
+  transparentHeader
+>
+  <main>
+
+    <!-- Hero -->
+    <section class="relative bg-fox-brown text-snow px-6 py-28 md:py-40 overflow-hidden -mt-[88px] pt-[130px] md:pt-[170px]">
+      <div class="absolute inset-0 bg-gradient-to-br from-night via-fox-brown to-deep-red/60"></div>
+      <div class="relative z-10 max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-10 font-medium">
+          Book a Room
+        </p>
+        <h1 class="font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-8 text-snow">
+          Checking availability<br />takes 30 seconds.
+        </h1>
+        <p class="font-display font-light italic text-xl md:text-2xl text-fox-cream max-w-2xl mx-auto leading-[1.5]">
+          Pick your dates below, or call us if you&rsquo;d rather hear a real voice.
+        </p>
+      </div>
+    </section>
+
+    <!-- Booking widget placeholder -->
+    <section class="bg-snow px-6 py-16 md:py-20">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-fox-cream border border-fox-orange/40 p-10 md:p-16 text-center">
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Booking Engine</p>
+          <h2 class="font-display font-light text-3xl md:text-4xl leading-[1.15] mb-8 text-fox-brown">
+            The booking engine is being wired in.
+          </h2>
+          <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed max-w-xl mx-auto mb-10">
+            Our reservation system (Innsoft Yanolja) will live here soon with real-time availability and instant confirmation. In the meantime, book by phone or email &mdash; we answer every call.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="tel:+16037884921" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+              Call (603) 788&#8209;4921
+            </a>
+            <a href="mailto:stay@redfoxinnnh.com" class="font-body inline-block px-10 py-4 text-fox-brown text-sm font-medium tracking-[0.15em] uppercase border border-fox-brown/40 hover:bg-fox-cream/80 hover:border-fox-brown transition-colors">
+              Email Us
+            </a>
+          </div>
+          <p class="font-body text-xs text-warm-gray mt-8 font-light">
+            Lobby open 7:30 AM &ndash; 9:00 PM daily.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Snowmobile seasonal -->
+    <section class="bg-night text-snow px-6 py-24 md:py-32">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">Snowmobile Seasonal</p>
+        <h2 class="font-display font-light italic text-4xl md:text-6xl leading-[1.1] mb-10 text-snow">
+          Three months.<br />$3,000. Park it at the door.
+        </h2>
+        <p class="font-body font-light text-lg md:text-xl text-fox-cream/90 leading-[1.75] mb-12 max-w-2xl mx-auto">
+          Trailer parked at your room 24/7. Ride right from your door onto the Ride the Wilds network. We support the Snow Drifters club. Call to reserve your winter.
+        </p>
+        <a href="tel:+16037884921" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+          Reserve Your Winter
+        </a>
+      </div>
+    </section>
+
+    <!-- Extended stay cross-sell -->
+    <section class="bg-fox-cream px-6 py-20 md:py-24">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+        <div>
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">Staying Longer?</p>
+          <h2 class="font-display font-light text-3xl md:text-4xl leading-[1.1] mb-6">Ask about weekly and monthly rates.</h2>
+          <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed mb-8">
+            Our private Extended Stay units have full kitchens, private entrances, and free on-site laundry. Great for medical travelers, contractors, or anyone who wants their own place in the North Country.
+          </p>
+          <a href="/stay/extended-ground/" class="font-body inline-block text-xs uppercase tracking-[0.25em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors">
+            Extended Stay Options &rarr;
+          </a>
+        </div>
+        <div class="aspect-[4/3] bg-gradient-to-br from-forest-green via-fox-brown to-night"></div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const inquiryTypes = [
+  'General',
+  'Extended Stay',
+  'Group or Event',
+  'Snowmobile Seasonal',
+  'Media or Press',
+];
+---
+<BaseLayout
+  title="Contact &amp; Directions &mdash; Red Fox Inn, Lancaster NH"
+  description="Call (603) 788-4921 or email stay@redfoxinnnh.com. Red Fox Inn is at 112 Main Street in downtown Lancaster, New Hampshire."
+  transparentHeader
+>
+  <main>
+
+    <!-- Hero -->
+    <section class="relative bg-fox-brown text-snow px-6 py-32 md:py-44 overflow-hidden -mt-[88px] pt-[140px] md:pt-[180px]">
+      <div class="absolute inset-0 bg-gradient-to-br from-night via-fox-brown to-deep-red/60"></div>
+      <div class="relative z-10 max-w-4xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-10 font-medium">
+          Contact
+        </p>
+        <h1 class="font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-8 text-snow">
+          We&rsquo;d love to<br />hear from you.
+        </h1>
+        <p class="font-display font-light italic text-xl md:text-2xl text-fox-cream max-w-2xl mx-auto leading-[1.5]">
+          Questions, reservations, group bookings, or the best way to get here from Boston &mdash; ask away.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact essentials -->
+    <section class="bg-snow px-6 py-20 md:py-24">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 md:gap-12">
+        <div>
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">By Phone</p>
+          <p class="font-display font-light text-3xl md:text-4xl mb-3 leading-tight">
+            <a href="tel:+16037884921" class="hover:text-fox-red transition-colors">(603) 788&#8209;4921</a>
+          </p>
+          <p class="font-body font-light text-base text-warm-gray leading-relaxed">
+            Lobby open 7:30 AM &ndash; 9:00 PM daily. A real person will answer.
+          </p>
+        </div>
+        <div>
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">By Email</p>
+          <p class="font-display font-light text-2xl md:text-3xl mb-3 leading-tight">
+            <a href="mailto:stay@redfoxinnnh.com" class="hover:text-fox-red transition-colors break-all">stay@redfoxinnnh.com</a>
+          </p>
+          <p class="font-body font-light text-base text-warm-gray leading-relaxed">
+            We respond within one business day.
+          </p>
+        </div>
+        <div>
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">In Person</p>
+          <p class="font-display font-light text-2xl md:text-3xl mb-3 leading-tight">
+            112 Main Street<br />Lancaster, NH 03584
+          </p>
+          <p class="font-body font-light text-base text-warm-gray leading-relaxed">
+            On Routes 2 &amp; 3, downtown. The Welcome Center is right behind us.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact form -->
+    <section class="bg-fox-cream px-6 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Send a Note</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-12">Tell us what you need.</h2>
+
+        <form
+          action="mailto:stay@redfoxinnnh.com"
+          method="post"
+          enctype="text/plain"
+          class="space-y-8"
+        >
+          <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+            <div>
+              <label for="name" class="font-body text-xs uppercase tracking-[0.25em] text-fox-brown mb-3 block font-medium">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="Name"
+                required
+                class="w-full bg-transparent border-b border-fox-brown/40 py-3 font-body text-base text-fox-brown focus:border-fox-red focus:outline-none transition-colors"
+              />
+            </div>
+            <div>
+              <label for="email" class="font-body text-xs uppercase tracking-[0.25em] text-fox-brown mb-3 block font-medium">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="Email"
+                required
+                class="w-full bg-transparent border-b border-fox-brown/40 py-3 font-body text-base text-fox-brown focus:border-fox-red focus:outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+            <div>
+              <label for="phone" class="font-body text-xs uppercase tracking-[0.25em] text-fox-brown mb-3 block font-medium">Phone <span class="text-warm-gray normal-case tracking-normal">(optional)</span></label>
+              <input
+                type="tel"
+                id="phone"
+                name="Phone"
+                class="w-full bg-transparent border-b border-fox-brown/40 py-3 font-body text-base text-fox-brown focus:border-fox-red focus:outline-none transition-colors"
+              />
+            </div>
+            <div>
+              <label for="topic" class="font-body text-xs uppercase tracking-[0.25em] text-fox-brown mb-3 block font-medium">About</label>
+              <select
+                id="topic"
+                name="Topic"
+                class="w-full bg-transparent border-b border-fox-brown/40 py-3 font-body text-base text-fox-brown focus:border-fox-red focus:outline-none transition-colors"
+              >
+                {inquiryTypes.map((t) => (
+                  <option value={t}>{t}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="font-body text-xs uppercase tracking-[0.25em] text-fox-brown mb-3 block font-medium">Message</label>
+            <textarea
+              id="message"
+              name="Message"
+              rows="5"
+              required
+              class="w-full bg-transparent border-b border-fox-brown/40 py-3 font-body text-base text-fox-brown focus:border-fox-red focus:outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+              Send Note
+            </button>
+          </div>
+
+          <p class="font-body text-xs text-warm-gray font-light">
+            Submitting opens your email client. For immediate help, call <a href="tel:+16037884921" class="text-fox-red hover:text-deep-red border-b border-fox-orange">(603) 788&#8209;4921</a>.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Directions -->
+    <section class="bg-snow px-6 py-20 md:py-24">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Directions</p>
+        <h2 class="font-display font-light text-4xl md:text-5xl leading-[1.1] mb-10">
+          Routes 2 &amp; 3.<br />Downtown. Can&rsquo;t miss us.
+        </h2>
+        <p class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75] mb-10">
+          We&rsquo;re on both Routes 2 &amp; 3 in the center of downtown Lancaster. The Great North Woods Welcome Center is directly behind the motel.
+        </p>
+        <a
+          href="https://www.google.com/maps/dir/?api=1&destination=112+Main+Street+Lancaster+NH+03584"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors"
+        >
+          Open in Google Maps
+        </a>
+      </div>
+    </section>
+
+    <!-- Map placeholder -->
+    <section class="bg-fox-cream">
+      <a
+        href="https://www.google.com/maps/place/112+Main+St,+Lancaster,+NH+03584"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block relative aspect-[21/9] overflow-hidden group"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-forest-green via-forest-sage to-fox-amber/60 transition-transform duration-700 group-hover:scale-[1.03]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(28,20,16,0.55)_100%)]"></div>
+        <div class="relative z-10 h-full flex items-center justify-center text-center text-snow px-6">
+          <div>
+            <p class="font-display font-light text-3xl md:text-5xl mb-4 leading-tight">112 Main Street</p>
+            <p class="font-body font-light text-lg text-fox-amber">Lancaster, NH 03584</p>
+            <p class="font-body text-xs uppercase tracking-[0.25em] mt-6 font-medium">View on Google Maps &rarr;</p>
+          </div>
+        </div>
+      </a>
+    </section>
+
+  </main>
+</BaseLayout>
