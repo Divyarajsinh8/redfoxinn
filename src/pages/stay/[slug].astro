@@ -15,13 +15,36 @@ interface Props { room: Room }
 const { room } = Astro.props;
 
 const otherRooms = rooms.filter((r) => r.slug !== room.slug).slice(0, 3);
+
+const roomSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HotelRoom',
+  name: room.name,
+  description: room.description,
+  url: `https://redfoxinnnh.com/stay/${room.slug}/`,
+  containedInPlace: {
+    '@type': 'Hotel',
+    '@id': 'https://redfoxinnnh.com/#hotel',
+    name: 'Red Fox Inn',
+    url: 'https://redfoxinnnh.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '112 Main Street',
+      addressLocality: 'Lancaster',
+      addressRegion: 'NH',
+      postalCode: '03584',
+      addressCountry: 'US',
+    },
+  },
+};
 ---
 <BaseLayout
   title={`${room.name} \u2014 Red Fox Inn | Lancaster, NH`}
   description={room.descriptor}
   transparentHeader
+  jsonLd={roomSchema}
 >
-  <main>
+  <main id="main-content">
 
     <!-- Hero image / gallery placeholder -->
     <section class="relative overflow-hidden -mt-[88px] pt-[88px]">

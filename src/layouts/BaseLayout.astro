@@ -3,6 +3,8 @@ import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
+type JsonLd = Record<string, unknown>;
+
 interface Props {
   title: string;
   description?: string;
@@ -10,6 +12,8 @@ interface Props {
   noindex?: boolean;
   transparentHeader?: boolean;
   bareLayout?: boolean;
+  ogImage?: string;
+  jsonLd?: JsonLd | JsonLd[];
 }
 
 const {
@@ -19,10 +23,14 @@ const {
   noindex = false,
   transparentHeader = false,
   bareLayout = false,
+  ogImage,
+  jsonLd,
 } = Astro.props;
 
 const siteUrl = 'https://redfoxinnnh.com';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+const schemaArray: JsonLd[] = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).toString() : null;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -32,11 +40,14 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString(
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#1C1410" />
+    <meta name="format-detection" content="telephone=no" />
 
+    <!-- Fonts: preconnect + load Cormorant Garamond + DM Sans (no system fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -44,14 +55,35 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString(
       rel="stylesheet"
     />
 
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Red Fox Inn" />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:locale" content="en_US" />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {ogImageUrl && <meta property="og:image:width" content="1200" />}
+    {ogImageUrl && <meta property="og:image:height" content="630" />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+
+    <!-- Structured data (one or more JSON-LD blocks) -->
+    {schemaArray.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
   <body class="antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-snow focus:text-fox-brown focus:px-5 focus:py-3 focus:font-body focus:text-sm focus:font-medium focus:tracking-wide focus:shadow-lg focus:outline-2 focus:outline-fox-red focus:outline-offset-2"
+    >
+      Skip to main content
+    </a>
     {!bareLayout && <SiteHeader transparent={transparentHeader} />}
     <slot />
     {!bareLayout && <SiteFooter />}

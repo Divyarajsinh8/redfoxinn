@@ -1,11 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What time is check-in and check-out at Red Fox Inn?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Check-in is 3:00 PM and check-out is 11:00 AM. Early check-in and late check-out are subject to availability — please call (603) 788-4921 to inquire.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the cancellation policy?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Cancellations made more than 72 hours before check-in receive a full refund. Cancellations within 72 hours of check-in are subject to a fee equal to one night’s stay plus tax. No-shows will be charged for the first night plus tax, and the remainder of the reservation will be cancelled.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are pets allowed at Red Fox Inn?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pets are not permitted in guest rooms, out of respect for guests with allergies. A cleaning fee of $250 will be assessed if this policy is violated. Service animals are welcome in accordance with ADA guidelines.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is smoking allowed at Red Fox Inn?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Red Fox Inn is a 100% non-smoking property. No smoking or vaping of any kind is permitted inside guest rooms, lobbies, or enclosed spaces. A cleaning fee of $250 will be charged for any violation. Designated outdoor smoking areas are available on the property.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What identification is required at check-in?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A valid government-issued photo ID is required at check-in. The primary guest must be 21 years of age or older. A valid credit or debit card is also required at check-in for any incidentals.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How often are rooms serviced by housekeeping?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'For stays of two nights or fewer, daily housekeeping is not provided — fresh towels and toiletries are available at the front desk on request. For stays of three or more nights, rooms are serviced on the third day. Extended stays of seven or more nights receive weekly housekeeping on a designated day.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What taxes apply to room rates?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'All rates are subject to the 9% New Hampshire Meals and Rooms Tax.',
+      },
+    },
+  ],
+};
 ---
 <BaseLayout
   title="Policies &mdash; Red Fox Inn"
   description="Check-in, cancellation, and house policies for Red Fox Inn in Lancaster, New Hampshire."
+  jsonLd={faqSchema}
 >
-  <main class="bg-fox-cream">
+  <main id="main-content" class="bg-fox-cream">
     <!-- Hero -->
     <section class="px-6 pt-24 pb-16">
       <div class="max-w-3xl mx-auto text-center">

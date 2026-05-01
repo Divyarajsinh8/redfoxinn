@@ -32,7 +32,7 @@ const { transparent = false } = Astro.props;
       <a href="/book/" class="font-body inline-block px-5 py-2 md:px-6 md:py-2.5 bg-fox-red text-snow text-xs md:text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
         Book&nbsp;Now
       </a>
-      <button id="mobileMenuToggle" class="lg:hidden text-snow p-1 -mr-1" aria-label="Open menu">
+      <button type="button" id="mobileMenuToggle" class="lg:hidden text-snow p-1 -mr-1" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
@@ -44,7 +44,7 @@ const { transparent = false } = Astro.props;
 <div id="mobileMenu" class="fixed inset-0 z-[100] bg-night text-snow hidden flex-col">
   <div class="flex items-center justify-between px-6 py-6">
     <a href="/" class="font-display font-light text-2xl">Red Fox Inn</a>
-    <button id="mobileMenuClose" class="text-snow p-1 -mr-1" aria-label="Close menu">
+    <button type="button" id="mobileMenuClose" class="text-snow p-1 -mr-1" aria-label="Close menu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
@@ -94,12 +94,22 @@ const { transparent = false } = Astro.props;
     menu?.classList.remove('hidden');
     menu?.classList.add('flex');
     document.body.style.overflow = 'hidden';
+    toggle?.setAttribute('aria-expanded', 'true');
   };
   const closeMenu = () => {
     menu?.classList.add('hidden');
     menu?.classList.remove('flex');
     document.body.style.overflow = '';
+    toggle?.setAttribute('aria-expanded', 'false');
   };
   toggle?.addEventListener('click', openMenu);
   closeBtn?.addEventListener('click', closeMenu);
+  // Close on ESC for keyboard users
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+      closeMenu();
+    }
+  });
+  // Close menu when an in-menu link is clicked (single-page nav UX)
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
 </script>

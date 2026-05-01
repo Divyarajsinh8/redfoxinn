@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Page Not Found &mdash; Red Fox Inn"
+  description="The page you were looking for couldn't be found. Head back home or call us at (603) 788-4921."
+  noindex
+  transparentHeader
+>
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="relative bg-fox-brown text-snow px-6 py-40 md:py-56 overflow-hidden -mt-[88px] pt-[160px] md:pt-[200px] min-h-[80vh] flex items-center">
+      <div class="absolute inset-0 bg-gradient-to-br from-night via-fox-brown to-deep-red/60"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(28,20,16,0.6)_100%)]"></div>
+      <div class="relative z-10 max-w-3xl mx-auto text-center w-full">
+        <p class="font-display font-light italic text-[8rem] md:text-[12rem] leading-none text-fox-orange/50 mb-2 select-none" aria-hidden="true">
+          404
+        </p>
+        <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-8 font-medium">
+          Page Not Found
+        </p>
+        <h1 class="font-display font-light text-4xl md:text-6xl lg:text-7xl leading-[1.05] mb-10 text-snow">
+          That trail doesn&rsquo;t lead<br />where you thought.
+        </h1>
+        <p class="font-display font-light italic text-lg md:text-xl text-fox-cream max-w-xl mx-auto leading-[1.5] mb-12">
+          The page you were looking for has either moved or never existed. Try one of these instead, or head back to the front desk.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+            Back to Home
+          </a>
+          <a href="tel:+16037884921" class="font-body inline-block px-10 py-4 text-snow text-sm font-medium tracking-[0.15em] uppercase border border-fox-cream/40 hover:bg-fox-cream/10 hover:border-fox-cream transition-colors">
+            Call (603) 788&#8209;4921
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular routes -->
+    <section class="bg-snow px-6 py-20 md:py-24">
+      <div class="max-w-5xl mx-auto">
+        <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-8 font-medium text-center">
+          Popular Pages
+        </p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <a href="/stay/" class="block bg-fox-cream p-6 hover:bg-fox-amber/30 transition-colors">
+            <p class="font-body text-[0.7rem] uppercase tracking-[0.25em] text-fox-orange mb-2 font-medium">Rooms</p>
+            <p class="font-display font-light text-xl text-fox-brown">Six ways to stay</p>
+          </a>
+          <a href="/experience/" class="block bg-fox-cream p-6 hover:bg-fox-amber/30 transition-colors">
+            <p class="font-body text-[0.7rem] uppercase tracking-[0.25em] text-fox-orange mb-2 font-medium">Experience</p>
+            <p class="font-display font-light text-xl text-fox-brown">Things to do in Lancaster</p>
+          </a>
+          <a href="/story/" class="block bg-fox-cream p-6 hover:bg-fox-amber/30 transition-colors">
+            <p class="font-body text-[0.7rem] uppercase tracking-[0.25em] text-fox-orange mb-2 font-medium">Story</p>
+            <p class="font-display font-light text-xl text-fox-brown">The fox, the forest, the town</p>
+          </a>
+          <a href="/book/" class="block bg-fox-cream p-6 hover:bg-fox-amber/30 transition-colors">
+            <p class="font-body text-[0.7rem] uppercase tracking-[0.25em] text-fox-orange mb-2 font-medium">Book</p>
+            <p class="font-display font-light text-xl text-fox-brown">Check availability</p>
+          </a>
+          <a href="/contact/" class="block bg-fox-cream p-6 hover:bg-fox-amber/30 transition-colors">
+            <p class="font-body text-[0.7rem] uppercase tracking-[0.25em] text-fox-orange mb-2 font-medium">Contact</p>
+            <p class="font-display font-light text-xl text-fox-brown">Phone, email, directions</p>
+          </a>
+          <a href="/policies/" class="block bg-fox-cream p-6 hover:bg-fox-amber/30 transition-colors">
+            <p class="font-body text-[0.7rem] uppercase tracking-[0.25em] text-fox-orange mb-2 font-medium">Policies</p>
+            <p class="font-display font-light text-xl text-fox-brown">House rules</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

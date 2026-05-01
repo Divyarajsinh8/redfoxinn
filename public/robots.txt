@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# CMS — keep bots out of the Sanity Studio
+Disallow: /studio
+Disallow: /studio/
+
+Sitemap: https://redfoxinnnh.com/sitemap-index.xml

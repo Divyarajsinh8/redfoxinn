@@ -57,13 +57,78 @@ const seasons = [
   { name: 'Summer', color: 'from-forest-green via-forest-sage to-fox-amber', blurb: 'Hike a 4,000-footer. Tube the Israel River. End the day at Copper Pig.' },
   { name: 'Spring', color: 'from-warm-gray via-forest-sage to-fox-cream', blurb: 'Mud season is for locals. And for guests who know where to find the quiet.' },
 ];
+
+const hotelSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Hotel', 'LodgingBusiness'],
+  '@id': 'https://redfoxinnnh.com/#hotel',
+  name: 'Red Fox Inn',
+  alternateName: 'Red Fox Inn — Lancaster, NH',
+  description: 'A 27-room independently operated inn on Main Street in Lancaster, New Hampshire. Park at your door. Walk to everything. In the heart of downtown Lancaster, in the gateway to the White Mountains.',
+  url: 'https://redfoxinnnh.com',
+  telephone: '+1-603-788-4921',
+  email: 'stay@redfoxinnnh.com',
+  priceRange: '$$',
+  numberOfRooms: 27,
+  petsAllowed: false,
+  smokingAllowed: false,
+  checkinTime: '15:00',
+  checkoutTime: '11:00',
+  currenciesAccepted: 'USD',
+  paymentAccepted: 'Cash, Credit Card',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '112 Main Street',
+    addressLocality: 'Lancaster',
+    addressRegion: 'NH',
+    postalCode: '03584',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 44.4888,
+    longitude: -71.5694,
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Coös County, New Hampshire',
+  },
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'Free Wi-Fi', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Free Parking', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Continental Breakfast', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Park at Your Door', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Snowmobile Trail Access', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'ATV Trail Access', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Cocktail Bar On-Site', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Cigar Lounge On-Site', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Event Space On-Site', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Extended Stay Units', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Pets Allowed', value: false },
+    { '@type': 'LocationFeatureSpecification', name: 'Smoking Rooms', value: false },
+  ],
+  potentialAction: {
+    '@type': 'ReserveAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://redfoxinnnh.com/book/',
+      inLanguage: 'en-US',
+      actionPlatform: ['http://schema.org/DesktopWebPlatform', 'http://schema.org/MobileWebPlatform'],
+    },
+    result: {
+      '@type': 'LodgingReservation',
+      name: 'Reserve a stay at Red Fox Inn',
+    },
+  },
+};
 ---
 <BaseLayout
   title="Red Fox Inn \u2014 Hotel in Lancaster, NH | White Mountains Lodging"
   description="A 27-room inn on Main Street in Lancaster, NH. Park at your door. Walk to everything. In the heart of downtown Lancaster, in the gateway to the White Mountains."
   transparentHeader
+  jsonLd={hotelSchema}
 >
-  <main>
+  <main id="main-content">
 
     <!-- ==== Section 1 — Hero ==== -->
     <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden text-snow -mt-[88px] pt-[88px]">
