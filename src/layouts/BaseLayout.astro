@@ -23,14 +23,14 @@ const {
   noindex = false,
   transparentHeader = false,
   bareLayout = false,
-  ogImage,
+  ogImage = '/images/brand/og-image.jpg',
   jsonLd,
 } = Astro.props;
 
 const siteUrl = 'https://redfoxinnnh.com';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
 const schemaArray: JsonLd[] = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
-const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).toString() : null;
+const ogImageUrl = new URL(ogImage, siteUrl).toString();
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -57,15 +57,16 @@ const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).toString() : null;
     <meta property="og:site_name" content="Red Fox Inn" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
-    {ogImageUrl && <meta property="og:image:width" content="1200" />}
-    {ogImageUrl && <meta property="og:image:height" content="630" />}
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Red Fox Inn — Lancaster, New Hampshire" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Structured data (one or more JSON-LD blocks) -->
     {schemaArray.map((schema) => (
