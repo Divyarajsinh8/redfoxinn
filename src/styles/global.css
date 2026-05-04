@@ -42,3 +42,85 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-fox-red);
   color: var(--color-snow);
 }
+
+/* Long-form journal article styles */
+.journal-prose {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--color-fox-brown);
+}
+.journal-prose > p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.journal-prose > p:first-of-type {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--color-fox-brown);
+}
+.journal-prose h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.875rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-fox-brown);
+}
+@media (min-width: 768px) {
+  .journal-prose h2 { font-size: 2.5rem; }
+}
+.journal-prose h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-fox-brown);
+}
+.journal-prose a {
+  color: var(--color-fox-red);
+  border-bottom: 1px solid var(--color-fox-orange);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+.journal-prose a:hover {
+  color: var(--color-deep-red);
+  border-color: var(--color-deep-red);
+}
+.journal-prose strong {
+  font-weight: 500;
+  color: var(--color-fox-brown);
+}
+.journal-prose em {
+  font-family: var(--font-display);
+  font-style: italic;
+}
+.journal-prose ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.journal-prose ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.journal-prose li {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+.journal-prose blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--color-fox-red);
+  margin: 2.5rem 0;
+  padding-left: 2rem;
+  border-left: 2px solid var(--color-fox-orange);
+}

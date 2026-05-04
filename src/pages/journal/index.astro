@@ -1,45 +1,70 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getJournalPosts } from '../../sanity/lib/client';
 
-let posts: any[] = [];
-try {
-  posts = (await getJournalPosts()) ?? [];
-} catch {
-  posts = [];
+interface JournalPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  publishedDate: string;
+  readMin: number;
+  gradient: string;
 }
 
-const plannedPosts = [
+const posts: JournalPost[] = [
   {
-    title: 'Hotels Near Santa\u2019s Village: Your Guide to Staying in Lancaster, NH',
-    excerpt: 'Santa\u2019s Village has been running since 1953. Here\u2019s where to stay, what to bring, and how to do both parks in a weekend.',
-    tag: 'Families',
+    slug: 'hotels-near-santas-village',
+    title: 'Hotels Near Santa’s Village: Your Guide to Staying in Lancaster, NH',
+    excerpt: 'Fifteen minutes south of our front door, a Christmas park that’s been running since 1953 still feels exactly like it did the day it opened. Here’s how to do the visit right.',
+    category: 'Families · North Country',
+    publishedDate: '2026-05-03',
+    readMin: 7,
+    gradient: 'from-fox-red via-deep-red to-fox-brown',
   },
   {
-    title: 'ATV Lodging on Ride the Wilds: Park at Your Door in Lancaster',
-    excerpt: 'The Northeast\u2019s largest ATV network connects to Main Street. Here\u2019s the inn you want as your basecamp.',
-    tag: 'Motorsports',
+    slug: 'atv-lodging-ride-the-wilds',
+    title: 'ATV Lodging on Ride the Wilds: Park at Your Door in Lancaster, NH',
+    excerpt: 'Ride the Wilds is the Northeast’s largest interconnected ATV trail system — 1,000+ miles. Lancaster is one of the few towns where you can ride from the trail to your room.',
+    category: 'Motorsports · North Country',
+    publishedDate: '2026-05-03',
+    readMin: 6,
+    gradient: 'from-fox-orange via-fox-red to-fox-brown',
   },
   {
-    title: 'Snowmobile Season in Co\u00f6s County: Where to Stay, Ride, and Warm Up',
-    excerpt: 'Seasonal rentals, trail access, Snow Drifters club, and the three places on Main Street to eat between rides.',
-    tag: 'Winter',
+    slug: 'snowmobile-lodging-coos-county',
+    title: 'Snowmobile Season in Coös County: Where to Stay, Ride, and Warm Up',
+    excerpt: 'The Coös corridor system runs from Quebec down through the White Mountains. Park your sled at your door, fuel up at the bar, do it again tomorrow.',
+    category: 'Winter · North Country',
+    publishedDate: '2026-05-03',
+    readMin: 6,
+    gradient: 'from-night via-fox-brown to-forest-green',
   },
   {
-    title: 'The Lancaster Fair: New England\u2019s Oldest Agricultural Tradition',
-    excerpt: 'Running every year since 1870. What to do, where to park, and why we always book out the week before.',
-    tag: 'Events',
+    slug: 'lancaster-fair-lodging',
+    title: 'The Lancaster Fair: New England’s Oldest Agricultural Tradition',
+    excerpt: 'Running every year since 1870. Labor Day weekend draws tens of thousands to the fairgrounds five minutes from our front door. Here’s what to expect — and why you should book early.',
+    category: 'Events · Local History',
+    publishedDate: '2026-05-03',
+    readMin: 5,
+    gradient: 'from-fox-amber via-fox-orange to-deep-red',
   },
   {
+    slug: 'hiking-4000-footers-lancaster',
     title: '4,000-Footers You Can Hike from Lancaster, NH',
-    excerpt: 'Mt. Waumbek, Mt. Jefferson, and the Presidential Range \u2014 all within 30 minutes of Main Street.',
-    tag: 'Hiking',
+    excerpt: 'New Hampshire has 48 mountains over 4,000 feet — the AMC’s 4,000-Footer Club. Several are reachable from a Lancaster basecamp. Mt. Waumbek, Caps Ridge, the Presidentials.',
+    category: 'Hiking · White Mountains',
+    publishedDate: '2026-05-03',
+    readMin: 8,
+    gradient: 'from-forest-green via-forest-sage to-fox-brown',
   },
 ];
+
+const dateFmt = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 <BaseLayout
   title="Journal &mdash; Red Fox Inn | North Country Stories from Lancaster, NH"
-  description="Stories from the North Woods. Things to do, places to eat, trails to ride, and small-town history from Red Fox Inn in Lancaster, NH."
+  description="Local guides, seasonal tips, and stories from the North Country. Hotels near Santa's Village, ATV lodging, snowmobile season, the Lancaster Fair, and hiking the 4,000-footers."
   transparentHeader
 >
   <main id="main-content">
@@ -60,54 +85,42 @@ const plannedPosts = [
       </div>
     </section>
 
-    {posts.length > 0 ? (
-      <section class="bg-snow px-6 py-20 md:py-28">
-        <div class="max-w-6xl mx-auto">
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {posts.map((post: any) => (
-              <a href={`/journal/${post.slug?.current ?? ''}/`} class="group block bg-fox-cream">
-                <div class="aspect-[4/3] bg-gradient-to-br from-fox-brown via-fox-red to-fox-orange"></div>
-                <div class="p-6 md:p-8">
-                  <p class="font-body text-[0.7rem] uppercase tracking-[0.3em] text-fox-orange mb-3 font-medium">
-                    {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''}
-                  </p>
-                  <h2 class="font-display font-light text-2xl md:text-3xl leading-tight mb-4 text-fox-brown group-hover:text-fox-red transition-colors">
-                    {post.title}
-                  </h2>
-                  {post.excerpt && <p class="font-body font-light text-sm text-warm-gray leading-relaxed">{post.excerpt}</p>}
+    <!-- Post grid -->
+    <section class="bg-snow px-6 py-20 md:py-28">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          {posts.map((post, i) => (
+            <a href={`/journal/${post.slug}/`} class="group block bg-fox-cream overflow-hidden">
+              <div class="relative aspect-[4/3] overflow-hidden">
+                <div class={`absolute inset-0 bg-gradient-to-br ${post.gradient} transition-transform duration-700 group-hover:scale-[1.04]`}></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-night/60 via-night/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-5">
+                  <p class="font-body text-[0.65rem] uppercase tracking-[0.3em] text-fox-amber font-medium">{post.category}</p>
                 </div>
-              </a>
-            ))}
-          </div>
+              </div>
+              <div class="p-6 md:p-8">
+                <p class="font-body text-[0.7rem] uppercase tracking-[0.3em] text-fox-orange mb-3 font-medium">
+                  {dateFmt(post.publishedDate)} <span class="text-warm-gray/60 mx-1">·</span> {post.readMin} min read
+                </p>
+                <h2 class="font-display font-light text-2xl md:text-[1.75rem] leading-[1.2] mb-4 text-fox-brown group-hover:text-fox-red transition-colors">
+                  {post.title}
+                </h2>
+                <p class="font-body font-light text-sm text-warm-gray leading-relaxed">{post.excerpt}</p>
+                <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-red mt-5 font-medium">
+                  Read &rarr;
+                </p>
+              </div>
+            </a>
+          ))}
         </div>
-      </section>
-    ) : (
-      <section class="bg-snow px-6 py-20 md:py-28">
-        <div class="max-w-5xl mx-auto">
-          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium text-center">Coming Soon</p>
-          <h2 class="font-display font-light text-3xl md:text-5xl leading-[1.1] mb-4 text-center">First stories are on the way.</h2>
-          <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed text-center mb-16 max-w-2xl mx-auto">
-            The journal hasn&rsquo;t launched yet. Here&rsquo;s what we&rsquo;re writing first.
+
+        <div class="text-center mt-20">
+          <p class="font-body text-sm text-warm-gray font-light max-w-xl mx-auto">
+            More stories on the way. Want them in your inbox? Drop us a line at <a href="mailto:stay@redfoxinnnh.com" class="text-fox-red hover:text-deep-red border-b border-fox-orange">stay@redfoxinnnh.com</a>.
           </p>
-
-          <div class="grid md:grid-cols-2 gap-6 md:gap-8">
-            {plannedPosts.map((post) => (
-              <article class="bg-fox-cream p-8 md:p-10">
-                <p class="font-body text-[0.7rem] uppercase tracking-[0.3em] text-fox-orange mb-3 font-medium">{post.tag}</p>
-                <h3 class="font-display font-light text-2xl md:text-3xl leading-tight mb-4 text-fox-brown">{post.title}</h3>
-                <p class="font-body font-light text-sm md:text-base text-warm-gray leading-relaxed">{post.excerpt}</p>
-              </article>
-            ))}
-          </div>
-
-          <div class="text-center mt-20">
-            <p class="font-body text-sm text-warm-gray font-light">
-              Want the first posts delivered? Drop us a line at <a href="mailto:stay@redfoxinnnh.com" class="text-fox-red hover:text-deep-red border-b border-fox-orange">stay@redfoxinnnh.com</a>.
-            </p>
-          </div>
         </div>
-      </section>
-    )}
+      </div>
+    </section>
 
   </main>
 </BaseLayout>
