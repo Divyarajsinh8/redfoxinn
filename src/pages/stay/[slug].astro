@@ -23,6 +23,16 @@ const roomSchema = {
   name: room.name,
   description: room.description,
   url: `https://redfoxinnnh.com/stay/${room.slug}/`,
+  bed: room.beds.map((b) => ({
+    '@type': 'BedDetails',
+    typeOfBed: b.type,
+    numberOfBeds: b.count,
+  })),
+  occupancy: {
+    '@type': 'QuantitativeValue',
+    maxValue: room.maxOccupancy,
+    unitCode: 'C62', // ISO unit code for "one" / count
+  },
   containedInPlace: {
     '@type': 'Hotel',
     '@id': 'https://redfoxinnnh.com/#hotel',

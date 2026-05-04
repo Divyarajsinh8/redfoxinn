@@ -1,3 +1,8 @@
+export interface BedDetail {
+  type: string;
+  count: number;
+}
+
 export interface Room {
   slug: string;
   name: string;
@@ -11,6 +16,8 @@ export interface Room {
   gradient: string;
   image: string;
   imageAlt: string;
+  beds: BedDetail[];
+  maxOccupancy: number;
   callDirectOnly?: boolean;
 }
 
@@ -38,6 +45,8 @@ export const rooms: Room[] = [
     gradient: 'from-fox-brown via-deep-red to-fox-brown',
     image: '/images/rooms/standard-queen-1600.webp',
     imageAlt: 'Standard Queen room at Red Fox Inn — one queen bed, light bedding, retro 1955 motor lodge layout',
+    beds: [{ type: 'Queen', count: 1 }],
+    maxOccupancy: 2,
   },
   {
     slug: 'deluxe-double',
@@ -61,6 +70,8 @@ export const rooms: Room[] = [
     gradient: 'from-night via-fox-brown to-deep-red',
     image: '/images/rooms/deluxe-double-1600.webp',
     imageAlt: 'Deluxe Double Room at Red Fox Inn — two double beds, sleeps four, classic motor lodge interior',
+    beds: [{ type: 'Double', count: 2 }],
+    maxOccupancy: 4,
   },
   {
     slug: 'deluxe-queen',
@@ -84,6 +95,8 @@ export const rooms: Room[] = [
     gradient: 'from-fox-brown via-fox-red to-fox-orange/50',
     image: '/images/rooms/deluxe-queen-1600.webp',
     imageAlt: 'Deluxe Queen Room at Red Fox Inn — two queen beds, the most spacious standard room',
+    beds: [{ type: 'Queen', count: 2 }],
+    maxOccupancy: 4,
   },
   {
     slug: 'retro-suite',
@@ -109,6 +122,11 @@ export const rooms: Room[] = [
     gradient: 'from-deep-red via-fox-red to-fox-orange',
     image: '/images/rooms/retro-suite-1600.webp',
     imageAlt: 'Retro Suite with kitchenette at Red Fox Inn — queen bed, sofa pullout, fridge and microwave',
+    beds: [
+      { type: 'Queen', count: 1 },
+      { type: 'Sofa bed (queen)', count: 1 },
+    ],
+    maxOccupancy: 4,
     callDirectOnly: true,
   },
   {
@@ -134,6 +152,8 @@ export const rooms: Room[] = [
     gradient: 'from-forest-green via-fox-brown to-night',
     image: '/images/rooms/extended-ground-1600.webp',
     imageAlt: 'Private Extended Stay (Ground Level) at Red Fox Inn — full kitchen, living room, private entrance',
+    beds: [{ type: 'Queen', count: 1 }],
+    maxOccupancy: 2,
   },
   {
     slug: 'extended-upper',
@@ -158,6 +178,8 @@ export const rooms: Room[] = [
     gradient: 'from-night via-forest-green to-forest-sage/60',
     image: '/images/rooms/extended-upper-1600.webp',
     imageAlt: 'Private Extended Stay (2nd Floor) at Red Fox Inn — full kitchen, quiet upper-level unit',
+    beds: [{ type: 'Queen', count: 1 }],
+    maxOccupancy: 2,
     callDirectOnly: true,
   },
 ];

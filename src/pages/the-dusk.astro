@@ -12,11 +12,44 @@ const brands = [
   'De Leon Cigars',
   '7-20-4',
 ];
+
+const duskSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BarOrPub',
+  '@id': 'https://redfoxinnnh.com/the-dusk/#lounge',
+  name: 'The Dusk',
+  alternateName: 'The Dusk Cigar Lounge at Red Fox Inn',
+  description: 'Cigar lounge inside Red Fox Inn — when the fox emerges. Walk-in humidor with Drew Estate, A. Fuente, Rocky Patel, Perdomo, and more. Top-shelf bourbon. Leather chairs.',
+  url: 'https://redfoxinnnh.com/the-dusk/',
+  telephone: '+1-603-788-4921',
+  servesCuisine: 'Cigars, Bourbon, Cocktails',
+  priceRange: '$$$',
+  acceptsReservations: false,
+  parentOrganization: { '@id': 'https://redfoxinnnh.com/#hotel' },
+  containedInPlace: { '@id': 'https://redfoxinnnh.com/#hotel' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '112 Main Street',
+    addressLocality: 'Lancaster',
+    addressRegion: 'NH',
+    postalCode: '03584',
+    addressCountry: 'US',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'],
+      opens: '14:00',
+      closes: '22:00',
+    },
+  ],
+};
 ---
 <BaseLayout
   title="The Dusk &mdash; Cigar Lounge | Red Fox Inn, Lancaster NH"
   description="When the fox emerges. Premium cigars, walk-in humidor, top-shelf bourbon. Drew Estate, A. Fuente, Rocky Patel, and more at Red Fox Inn in Lancaster, NH."
   transparentHeader
+  jsonLd={duskSchema}
 >
   <main id="main-content">
 

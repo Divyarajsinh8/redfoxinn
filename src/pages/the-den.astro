@@ -1,10 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const denSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BarOrPub',
+  '@id': 'https://redfoxinnnh.com/the-den/#bar',
+  name: 'The Den',
+  alternateName: 'The Den at Red Fox Inn',
+  description: 'Cocktail bar inside Red Fox Inn — every fox needs a place to unwind. Classic cocktails, jazz on weekends, speakeasy ambiance in the heart of downtown Lancaster, New Hampshire.',
+  url: 'https://redfoxinnnh.com/the-den/',
+  telephone: '+1-603-788-4921',
+  servesCuisine: 'Cocktails, American small plates',
+  priceRange: '$$',
+  acceptsReservations: false,
+  parentOrganization: { '@id': 'https://redfoxinnnh.com/#hotel' },
+  containedInPlace: { '@id': 'https://redfoxinnnh.com/#hotel' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '112 Main Street',
+    addressLocality: 'Lancaster',
+    addressRegion: 'NH',
+    postalCode: '03584',
+    addressCountry: 'US',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'],
+      opens: '17:00',
+      closes: '23:00',
+    },
+  ],
+};
 ---
 <BaseLayout
   title="The Den &mdash; Cocktail Bar | Red Fox Inn, Lancaster NH"
   description="Every fox needs a place to unwind. Craft cocktails, live music weekends, speakeasy ambiance in the heart of downtown Lancaster, New Hampshire."
   transparentHeader
+  jsonLd={denSchema}
 >
   <main id="main-content">
 
