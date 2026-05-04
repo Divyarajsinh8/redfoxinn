@@ -36,7 +36,7 @@ export const rooms: Room[] = [
     goodToKnow:
       'The bathrooms built in 1955 are on the smaller side — but the water’s hot and the towels are fresh.',
     gradient: 'from-fox-brown via-deep-red to-fox-brown',
-    image: '/images/rooms/standard-queen.jpg',
+    image: '/images/rooms/standard-queen-1600.webp',
     imageAlt: 'Standard Queen room at Red Fox Inn — one queen bed, light bedding, retro 1955 motor lodge layout',
   },
   {
@@ -59,7 +59,7 @@ export const rooms: Room[] = [
     goodToKnow:
       'A classic 1955 floor plan with a little more elbow room than the Standard Queen.',
     gradient: 'from-night via-fox-brown to-deep-red',
-    image: '/images/rooms/deluxe-double.jpg',
+    image: '/images/rooms/deluxe-double-1600.webp',
     imageAlt: 'Deluxe Double Room at Red Fox Inn — two double beds, sleeps four, classic motor lodge interior',
   },
   {
@@ -82,7 +82,7 @@ export const rooms: Room[] = [
     goodToKnow:
       'The biggest of our standard rooms. Request one on the quieter back row if you’d like to turn in early.',
     gradient: 'from-fox-brown via-fox-red to-fox-orange/50',
-    image: '/images/rooms/deluxe-queen.jpg',
+    image: '/images/rooms/deluxe-queen-1600.webp',
     imageAlt: 'Deluxe Queen Room at Red Fox Inn — two queen beds, the most spacious standard room',
   },
   {
@@ -107,7 +107,7 @@ export const rooms: Room[] = [
     goodToKnow:
       'Ground floor only. Call us directly to book this room — this one isn’t on the booking engine.',
     gradient: 'from-deep-red via-fox-red to-fox-orange',
-    image: '/images/rooms/retro-suite.jpg',
+    image: '/images/rooms/retro-suite-1600.webp',
     imageAlt: 'Retro Suite with kitchenette at Red Fox Inn — queen bed, sofa pullout, fridge and microwave',
     callDirectOnly: true,
   },
@@ -132,7 +132,7 @@ export const rooms: Room[] = [
     goodToKnow:
       'Weeks Memorial Hospital is 1.25 miles away — popular with traveling medical professionals. Rates discount by the week and month.',
     gradient: 'from-forest-green via-fox-brown to-night',
-    image: '/images/rooms/extended-ground.jpg',
+    image: '/images/rooms/extended-ground-1600.webp',
     imageAlt: 'Private Extended Stay (Ground Level) at Red Fox Inn — full kitchen, living room, private entrance',
   },
   {
@@ -156,7 +156,7 @@ export const rooms: Room[] = [
     goodToKnow:
       'Second floor, quieter side of the building. Call us to book your escape.',
     gradient: 'from-night via-forest-green to-forest-sage/60',
-    image: '/images/rooms/extended-upper.jpg',
+    image: '/images/rooms/extended-upper-1600.webp',
     imageAlt: 'Private Extended Stay (2nd Floor) at Red Fox Inn — full kitchen, quiet upper-level unit',
     callDirectOnly: true,
   },

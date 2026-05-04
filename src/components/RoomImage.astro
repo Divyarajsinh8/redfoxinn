@@ -1,0 +1,36 @@
+---
+/**
+ * Self-contained <img> for a room photo with srcset, native lazy loading,
+ * width/height to prevent CLS, and decoding="async". The "1600" file is
+ * actually 1000w max (source photo limit); srcset descriptors reflect that.
+ */
+interface Props {
+  slug: string;
+  alt: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'auto' | 'low';
+  sizes?: string;
+}
+
+const {
+  slug,
+  alt,
+  class: className = '',
+  loading = 'lazy',
+  fetchpriority,
+  sizes = '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw',
+} = Astro.props;
+---
+<img
+  src={`/images/rooms/${slug}-1600.webp`}
+  srcset={`/images/rooms/${slug}-800.webp 800w, /images/rooms/${slug}-1600.webp 1000w`}
+  sizes={sizes}
+  width="1000"
+  height="670"
+  alt={alt}
+  loading={loading}
+  fetchpriority={fetchpriority}
+  decoding="async"
+  class={className}
+/>

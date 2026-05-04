@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RoomImage from '../components/RoomImage.astro';
 import { rooms } from '../data/rooms';
 
 const experiences = [
@@ -178,11 +179,10 @@ const hotelSchema = {
               href={`/stay/${r.slug}/`}
               class="group block relative aspect-[4/5] overflow-hidden"
             >
-              <img
-                src={r.image}
+              <RoomImage
+                slug={r.slug}
                 alt={r.imageAlt}
-                loading="lazy"
-                decoding="async"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-night/85 via-night/30 to-night/10"></div>

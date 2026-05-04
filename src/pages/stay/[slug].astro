@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RoomImage from '../../components/RoomImage.astro';
 import { rooms, type Room } from '../../data/rooms';
 
 export const prerender = true;
@@ -49,11 +50,12 @@ const roomSchema = {
     <!-- Hero image -->
     <section class="relative overflow-hidden -mt-[88px] pt-[88px]">
       <div class="relative aspect-[16/9] md:aspect-[21/9]">
-        <img
-          src={room.image}
+        <RoomImage
+          slug={room.slug}
           alt={room.imageAlt}
+          loading="eager"
           fetchpriority="high"
-          decoding="async"
+          sizes="100vw"
           class="absolute inset-0 w-full h-full object-cover"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-night/80 via-night/30 to-night/40"></div>
@@ -140,11 +142,10 @@ const roomSchema = {
           {otherRooms.map((other) => (
             <a href={`/stay/${other.slug}/`} class="group block bg-snow">
               <div class="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={other.image}
+                <RoomImage
+                  slug={other.slug}
                   alt={other.imageAlt}
-                  loading="lazy"
-                  decoding="async"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-night/65 to-transparent"></div>
