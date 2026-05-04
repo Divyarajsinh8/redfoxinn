@@ -82,5 +82,34 @@ const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).toString() : null;
     {!bareLayout && <SiteHeader transparent={transparentHeader} />}
     <slot />
     {!bareLayout && <SiteFooter />}
+
+    <script>
+      // Scroll fade-in for content sections (skip hero — first <section> in <main>)
+      // Respects prefers-reduced-motion. Tiny — no library.
+      (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (typeof IntersectionObserver === 'undefined') return;
+
+        const sections = document.querySelectorAll('main > section');
+        if (sections.length < 2) return;
+
+        // Mark all but the first hero as fade-in candidates
+        const candidates = Array.from(sections).slice(1);
+        candidates.forEach((s) => s.classList.add('rfi-fade'));
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.08, rootMargin: '0px 0px -8% 0px' },
+        );
+        candidates.forEach((s) => io.observe(s));
+      })();
+    </script>
   </body>
 </html>

@@ -54,6 +54,67 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-snow);
 }
 
+/* ============== Motion + interaction polish ============== */
+
+/* Scroll fade-in: JS sets initial state on non-hero sections, IO unhides */
+@media (prefers-reduced-motion: no-preference) {
+  .rfi-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    will-change: opacity, transform;
+  }
+  .rfi-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Primary CTA — subtle warmth glow on hover (Fox Red → Deep Red) */
+  a.bg-fox-red,
+  button.bg-fox-red {
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.25s ease,
+      transform 0.2s ease;
+  }
+  a.bg-fox-red:hover,
+  button.bg-fox-red:hover {
+    box-shadow: 0 0 24px rgba(192, 57, 43, 0.32);
+  }
+
+  /* Mobile menu — stagger items in when menu opens */
+  #mobileMenu nav a {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+  }
+  #mobileMenu.is-open nav a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #mobileMenu.is-open nav a:nth-child(1) { transition-delay: 60ms; }
+  #mobileMenu.is-open nav a:nth-child(2) { transition-delay: 110ms; }
+  #mobileMenu.is-open nav a:nth-child(3) { transition-delay: 160ms; }
+  #mobileMenu.is-open nav a:nth-child(4) { transition-delay: 210ms; }
+  #mobileMenu.is-open nav a:nth-child(5) { transition-delay: 260ms; }
+  #mobileMenu.is-open nav a:nth-child(6) { transition-delay: 310ms; }
+  #mobileMenu.is-open nav a:nth-child(7) { transition-delay: 360ms; }
+  #mobileMenu.is-open nav a:nth-child(8) { transition-delay: 410ms; }
+  #mobileMenu.is-open nav a:nth-child(9) { transition-delay: 460ms; }
+}
+
+/* Section divider — thin Fox Orange hairline, opt-in via .rfi-divider */
+.rfi-divider {
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 0 auto;
+  background: var(--color-fox-orange);
+  opacity: 0.4;
+}
+
+/* ========================================================== */
+
 /* Long-form journal article styles */
 .journal-prose {
   font-family: var(--font-body);

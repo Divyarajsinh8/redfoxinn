@@ -96,8 +96,11 @@ const { transparent = false } = Astro.props;
     menu?.classList.add('flex');
     document.body.style.overflow = 'hidden';
     toggle?.setAttribute('aria-expanded', 'true');
+    // Trigger stagger animation on next frame so transitions fire
+    requestAnimationFrame(() => menu?.classList.add('is-open'));
   };
   const closeMenu = () => {
+    menu?.classList.remove('is-open');
     menu?.classList.add('hidden');
     menu?.classList.remove('flex');
     document.body.style.overflow = '';
