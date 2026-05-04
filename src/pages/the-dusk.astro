@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const brands = [
   'Drew Estate',
   'Dunbarton',
-  'My Father\u2019s Promise',
+  'My Father’s Promise',
   'Ashton',
   'Rocky Patel',
   'A. Fuente',
@@ -14,8 +14,8 @@ const brands = [
 ];
 ---
 <BaseLayout
-  title="The Waypoint Cigar Lounge &mdash; Red Fox Inn, Lancaster NH"
-  description="Leather chairs, a walk-in humidor, and top-shelf bourbon. The Waypoint Cigar Lounge at Red Fox Inn in Lancaster, NH."
+  title="The Dusk &mdash; Cigar Lounge | Red Fox Inn, Lancaster NH"
+  description="When the fox emerges. Premium cigars, walk-in humidor, top-shelf bourbon. Drew Estate, A. Fuente, Rocky Patel, and more at Red Fox Inn in Lancaster, NH."
   transparentHeader
 >
   <main id="main-content">
@@ -28,31 +28,53 @@ const brands = [
         <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-10 font-medium">
           The Lounge
         </p>
-        <h1 class="font-display font-light text-5xl md:text-7xl lg:text-[6rem] leading-[1.05] mb-10 text-snow">
-          The<br />Waypoint.
+        <h1 class="font-display font-light text-6xl md:text-8xl lg:text-[7rem] leading-[1.05] mb-10 text-snow">
+          The Dusk.
         </h1>
         <p class="font-display font-light italic text-xl md:text-2xl text-fox-amber max-w-3xl mx-auto leading-[1.5]">
-          A point in space where you can relax and unwind.
+          When the fox emerges.
         </p>
       </div>
     </section>
 
-    <!-- Copy -->
+    <!-- Body copy -->
     <section class="bg-snow px-6 py-24 md:py-32">
       <div class="max-w-3xl mx-auto">
         <div class="font-body font-light text-lg md:text-xl text-fox-brown leading-[1.75] space-y-8">
           <p>
-            The smell and taste of satisfaction awaits as you settle into leather chairs with a quality cigar and a top-shelf bourbon. Or create your own unique experience and pair your chosen one with a craft cocktail from <a href="/bar/" class="text-fox-red border-b border-fox-orange hover:text-deep-red hover:border-deep-red transition-colors">The Compass Rose</a> next door.
+            Dusk is the hour when foxes emerge &mdash; that liminal edge between day and night when the world goes quiet and the fire gets lit. The Dusk is our cigar lounge, and it lives in that same space between the day you had and the night ahead.
           </p>
           <p>
-            Quality sticks from Drew Estate, Dunbarton, My Father&rsquo;s Promise, Ashton, Rocky Patel, A. Fuente, and Perdomo. Newcomers <em class="font-display">De Leon Cigars</em> and the reinvented <em class="font-display">7-20-4</em> line from our very own New Hampshire. With all the options available, disappointment is not one of them.
+            Settle into leather chairs with a quality cigar and a top-shelf bourbon. Peruse our walk-in humidor and select from premium sticks &mdash; Drew Estate, Dunbarton, My Father&rsquo;s Promise, Ashton, Rocky Patel, A. Fuente, Perdomo. Newcomers <em class="font-display">De Leon Cigars</em> and the reinvented <em class="font-display">7-20-4</em> line from our very own New Hampshire.
+          </p>
+          <p class="font-display italic text-2xl md:text-3xl text-fox-red leading-[1.4] pt-4">
+            You start the evening at <a href="/the-den/" class="border-b border-fox-orange hover:text-deep-red hover:border-deep-red transition-colors">The Den</a>. You finish it at The Dusk.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why the name -->
+    <section class="bg-fox-cream px-6 py-24 md:py-32">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start">
+        <div>
+          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-3 font-medium">
+            Why &ldquo;The Dusk&rdquo;
+          </p>
+          <p class="font-display font-light text-3xl md:text-4xl leading-[1.1] text-fox-brown">
+            The hour the fox<br />gets to work.
+          </p>
+        </div>
+        <div class="font-display font-light italic text-xl md:text-2xl text-fox-brown leading-[1.55] border-l-2 border-fox-orange pl-8 md:pl-10">
+          <p>
+            &ldquo;Dusk is when foxes hunt. It&rsquo;s the edge between daylight and dark, when everything gets quieter and the fire gets warmer. We named our cigar lounge The Dusk because it&rsquo;s where your evening deepens &mdash; from cocktails to bourbon, from conversation to contemplation.&rdquo;
           </p>
         </div>
       </div>
     </section>
 
     <!-- Brand strip -->
-    <section class="bg-fox-cream px-6 py-20 md:py-24">
+    <section class="bg-snow px-6 py-20 md:py-24">
       <div class="max-w-5xl mx-auto">
         <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-10 font-medium text-center">In the Humidor</p>
         <div class="flex flex-wrap justify-center gap-x-10 gap-y-6">
@@ -84,18 +106,18 @@ const brands = [
       </div>
     </section>
 
-    <!-- Cross-sell to Bar -->
+    <!-- Cross-sell to The Den -->
     <section class="bg-fox-cream px-6 py-20 md:py-28">
       <div class="max-w-4xl mx-auto text-center">
         <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-6 font-medium">Next Door</p>
         <h2 class="font-display font-light italic text-3xl md:text-5xl leading-[1.15] mb-8">
-          Start the evening<br />at The Compass Rose.
+          Start the evening<br />at The Den.
         </h2>
         <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed mb-10 max-w-xl mx-auto">
           Classic cocktails in a jazz-and-velvet setting. Pick up a cigar from the humidor on your way through.
         </p>
-        <a href="/bar/" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
-          Visit the Compass Rose
+        <a href="/the-den/" class="font-body inline-block px-10 py-4 bg-fox-red text-snow text-sm font-medium tracking-[0.15em] uppercase hover:bg-deep-red transition-colors">
+          Visit The Den
         </a>
       </div>
     </section>

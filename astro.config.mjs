@@ -12,6 +12,12 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://redfoxinnnh.com',
 
+  // Legacy routes — keep external links + bookmarks alive after the rename
+  redirects: {
+    '/bar': '/the-den',
+    '/lounge': '/the-dusk',
+  },
+
   integrations: [
     sanity({
       projectId: 'ug6dnpcr',
