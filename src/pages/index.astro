@@ -1,44 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const rooms = [
-  {
-    slug: 'standard-queen',
-    name: 'Standard Queen',
-    descriptor: 'One queen. Extra room. Everything you need.',
-    gradient: 'from-fox-brown via-deep-red to-fox-brown',
-  },
-  {
-    slug: 'deluxe-double',
-    name: 'Deluxe Double',
-    descriptor: 'Two double beds. Great for friends or a family of four.',
-    gradient: 'from-night via-fox-brown to-deep-red',
-  },
-  {
-    slug: 'deluxe-queen',
-    name: 'Deluxe Queen',
-    descriptor: 'Two queen beds. Our most spacious standard room.',
-    gradient: 'from-fox-brown via-fox-red to-fox-orange/40',
-  },
-  {
-    slug: 'retro-suite',
-    name: 'Retro Suite',
-    descriptor: 'Queen bed, sofa pullout, kitchenette. Room to spread out.',
-    gradient: 'from-deep-red via-fox-red to-fox-orange',
-  },
-  {
-    slug: 'extended-ground',
-    name: 'Extended Stay · Ground',
-    descriptor: 'Full kitchen. Private entrance. Your own place.',
-    gradient: 'from-forest-green via-fox-brown to-night',
-  },
-  {
-    slug: 'extended-upper',
-    name: 'Extended Stay · Upper',
-    descriptor: 'Full kitchen. Private entrance. Second floor quiet.',
-    gradient: 'from-night via-forest-green to-forest-sage/60',
-  },
-];
+import { rooms } from '../data/rooms';
 
 const experiences = [
   { title: 'Polish Princess Bakery', meta: '1 min walk', hook: 'Bread baked before your eyes. Pierogi that\u2019ll ruin you for all others.' },
@@ -216,14 +178,20 @@ const hotelSchema = {
               href={`/stay/${r.slug}/`}
               class="group block relative aspect-[4/5] overflow-hidden"
             >
-              <div class={`absolute inset-0 bg-gradient-to-br ${r.gradient} transition-transform duration-700 group-hover:scale-[1.04]`}></div>
-              <div class="absolute inset-0 bg-gradient-to-t from-night/70 via-night/10 to-transparent"></div>
+              <img
+                src={r.image}
+                alt={r.imageAlt}
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-night/85 via-night/30 to-night/10"></div>
               <div class="relative z-10 h-full flex flex-col justify-end p-8">
                 <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-amber mb-3 font-medium">
-                  {r.slug === 'retro-suite' ? 'Suite' : r.slug.startsWith('extended') ? 'Extended Stay' : 'Room'}
+                  {r.category}
                 </p>
                 <h3 class="font-display font-light text-3xl md:text-4xl text-snow mb-3 leading-tight">
-                  {r.name}
+                  {r.shortName}
                 </h3>
                 <p class="font-body font-light text-sm text-fox-cream/90 leading-relaxed mb-5 max-w-sm">
                   {r.descriptor}
