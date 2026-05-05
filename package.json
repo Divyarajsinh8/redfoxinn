@@ -27,5 +27,8 @@
     "react-dom": "^19.2.5",
     "sanity": "^5.22.0",
     "tailwindcss": "^4.2.4"
+  },
+  "devDependencies": {
+    "to-ico": "^1.1.5"
   }
 }
