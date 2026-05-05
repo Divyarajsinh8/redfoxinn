@@ -1,13 +1,13 @@
-/* Self-hosted fonts — no Google Fonts CDN dependency */
+/* Self-hosted fonts — no Google Fonts CDN dependency
+   Trimmed to weights actually used in the rendered HTML (audited 2026-05-04).
+   Cormorant: 300, 400, 500, 400-italic.   DM Sans: 300, 400, 500. */
 @import "@fontsource/cormorant-garamond/latin-300.css";
 @import "@fontsource/cormorant-garamond/latin-400.css";
 @import "@fontsource/cormorant-garamond/latin-500.css";
 @import "@fontsource/cormorant-garamond/latin-400-italic.css";
-@import "@fontsource/cormorant-garamond/latin-500-italic.css";
 @import "@fontsource/dm-sans/latin-300.css";
 @import "@fontsource/dm-sans/latin-400.css";
 @import "@fontsource/dm-sans/latin-500.css";
-@import "@fontsource/dm-sans/latin-600.css";
 
 @import "tailwindcss";
 
@@ -30,8 +30,8 @@
   --font-body: "DM Sans", sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
