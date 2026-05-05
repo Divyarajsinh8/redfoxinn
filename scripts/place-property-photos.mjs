@@ -54,11 +54,13 @@ for (const item of MAP) {
     continue;
   }
   const meta = await sharp(src).metadata();
-  // Two sizes for srcset
+  // Two sizes for srcset.
+  // .rotate() with no args physically applies EXIF orientation then clears it.
+  // Without this, phone-camera shots can ship upside-down / sideways.
   const out800 = join(OUT, `${item.out}-800.webp`);
   const out1600 = join(OUT, `${item.out}-1600.webp`);
-  const i800 = await sharp(src).resize({ width: 800, withoutEnlargement: true }).webp({ quality: 78 }).toFile(out800);
-  const i1600 = await sharp(src).resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 80 }).toFile(out1600);
+  const i800 = await sharp(src).rotate().resize({ width: 800, withoutEnlargement: true }).webp({ quality: 78 }).toFile(out800);
+  const i1600 = await sharp(src).rotate().resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 80 }).toFile(out1600);
 
   manifest[item.out] = {
     width: meta.width,
