@@ -7,30 +7,40 @@ const spaces = [
     capacity: 'Intimate gatherings \u00b7 15\u201320 guests',
     detail: 'Named for the Abenaki word for the Israel River that flows through downtown Lancaster \u2014 Siwooganock, \u201cplace of the burnt pine trees.\u201d Our most intimate gathering space, perfect for rehearsal dinners, small meetings, private tastings, and conversations that matter. Every guest who asks about the name learns something about the land this inn sits on.',
     href: null,
+    image: '/images/property/reception-1',
+    imageAlt: 'The Siwooganock Room \u2014 intimate gathering space at Red Fox Inn',
   },
   {
     name: 'The Den',
     capacity: 'Cocktail bar \u00b7 private events + receptions',
     detail: 'Our speakeasy-style cocktail bar. Available for private events, cocktail receptions, and after-parties. A fox\u2019s den is its home base \u2014 and this is yours for the evening.',
     href: '/the-den/',
+    image: '/images/property/the-den-1',
+    imageAlt: 'The Den cocktail bar at Red Fox Inn \u2014 bar counter and lounge seating',
   },
   {
     name: 'The Dusk',
     capacity: 'Cigar lounge \u00b7 private events + VIP gatherings',
     detail: 'Our premium cigar lounge with walk-in humidor. Available for private events and VIP gatherings. The hour when foxes emerge.',
     href: '/the-dusk/',
+    image: '/images/property/the-dusk',
+    imageAlt: 'The Dusk cigar lounge at Red Fox Inn \u2014 leather chairs in warm light',
   },
   {
     name: 'The Prospect Room',
     capacity: 'Mid-size events \u00b7 up to 50 guests',
     detail: 'Named for Mt. Prospect \u2014 the mountain five minutes from the inn with a 56-foot fire tower and 360-degree views of the White Mountains. Located upstairs with views of Lancaster\u2019s famous church steeples. Ideal for meetings, retirement celebrations, wedding rehearsal dinners, graduation parties, and educational seminars. The name carries a double meaning: elevated views, elevated possibilities.',
     href: null,
+    image: '/images/property/prospect-room',
+    imageAlt: 'The Prospect Room at Red Fox Inn \u2014 mid-size event space upstairs',
   },
   {
     name: 'The Huntington Room',
     capacity: 'Grand events \u00b7 125+ guests',
     detail: 'Named for Anna Vaughn Hyatt Huntington, the sculptor who cast Lancaster\u2019s iconic bronze fox in 1913. Her Joan of Arc stands in Manhattan\u2019s Riverside Park. Her fox stands three blocks from our front door. This is our largest and most prestigious space \u2014 for weddings, receptions, anniversaries, conferences, and holiday parties that deserve a room with a story.',
     href: null,
+    image: '/images/property/huntington-room',
+    imageAlt: 'The Huntington Room at Red Fox Inn \u2014 the largest event space, named for Anna Hyatt Huntington',
   },
 ];
 
@@ -90,26 +100,35 @@ const weddingTerms = [
 
     <!-- The 5 spaces -->
     <section class="bg-fox-cream px-6 py-20 md:py-28">
-      <div class="max-w-5xl mx-auto">
-        <div class="divide-y divide-fox-orange/50 border-t border-b border-fox-orange/50">
-          {spaces.map((s, i) => (
-            <div class="grid md:grid-cols-[auto_1.2fr_2fr] gap-4 md:gap-10 py-10 md:py-12 items-start">
-              <p class="font-display font-light text-3xl md:text-4xl text-fox-red mt-1">0{i + 1}</p>
-              <div>
-                <h3 class="font-display font-light text-2xl md:text-3xl leading-tight text-fox-brown mb-2">{s.name}</h3>
-                <p class="font-body text-xs uppercase tracking-[0.2em] text-fox-orange font-medium">{s.capacity}</p>
-              </div>
-              <div>
-                <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed">{s.detail}</p>
-                {s.href && (
-                  <a href={s.href} class="font-body inline-block mt-4 text-xs uppercase tracking-[0.25em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors">
-                    Visit {s.name} &rarr;
-                  </a>
-                )}
-              </div>
+      <div class="max-w-6xl mx-auto space-y-16 md:space-y-24">
+        {spaces.map((s, i) => (
+          <div class={`grid md:grid-cols-2 gap-8 md:gap-14 items-center ${i % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''}`}>
+            <div class="relative aspect-[4/3] overflow-hidden bg-fox-brown">
+              <img
+                src={`${s.image}-1600.webp`}
+                srcset={`${s.image}-800.webp 800w, ${s.image}-1600.webp 1000w`}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                alt={s.imageAlt}
+                width="1000"
+                height="750"
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
-          ))}
-        </div>
+            <div>
+              <p class="font-display font-light text-3xl md:text-4xl text-fox-red mb-3">0{i + 1}</p>
+              <h3 class="font-display font-light text-3xl md:text-4xl leading-tight text-fox-brown mb-3">{s.name}</h3>
+              <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-orange font-medium mb-6">{s.capacity}</p>
+              <p class="font-body font-light text-base md:text-lg text-warm-gray leading-relaxed">{s.detail}</p>
+              {s.href && (
+                <a href={s.href} class="font-body inline-block mt-6 text-xs uppercase tracking-[0.25em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors">
+                  Visit {s.name} &rarr;
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
 

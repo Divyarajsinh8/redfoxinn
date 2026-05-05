@@ -95,9 +95,21 @@ const hotelSchema = {
 
     <!-- ==== Section 1 — Hero ==== -->
     <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden text-snow -mt-[88px] pt-[88px]">
-      <!-- Placeholder background (swap for hero photo per Section 7) -->
-      <div class="absolute inset-0 bg-gradient-to-br from-night via-fox-brown to-deep-red/80"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(28,20,16,0.6)_100%)]"></div>
+      <!-- Property exterior — placeholder until pro photography is delivered -->
+      <img
+        src="/images/property/exterior-front-1-1600.webp"
+        srcset="/images/property/exterior-front-1-800.webp 800w, /images/property/exterior-front-1-1600.webp 1400w"
+        sizes="100vw"
+        alt="Red Fox Inn exterior at dusk — the curved-roof 1955 motor lodge in downtown Lancaster, NH"
+        width="1400"
+        height="1050"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-night/55"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-night/30 via-transparent to-night/80"></div>
 
       <div class="relative z-10 w-full max-w-5xl mx-auto px-6 text-center py-24">
         <p class="font-body text-[0.7rem] md:text-xs uppercase tracking-[0.4em] text-fox-orange mb-8 font-medium">
@@ -307,25 +319,53 @@ const hotelSchema = {
     <!-- ==== Section 7 — The Den & The Dusk ==== -->
     <section class="bg-night text-snow">
       <div class="grid md:grid-cols-2">
-        <a href="/the-den/" class="group relative px-8 py-20 md:p-16 lg:p-20 border-b md:border-b-0 md:border-r border-fox-brown/60 hover:bg-fox-brown/30 transition-colors">
-          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">The Den &middot; Cocktail Bar</p>
-          <h3 class="font-display font-light text-4xl md:text-5xl leading-tight mb-6">Every fox needs<br />a place to unwind.</h3>
-          <p class="font-body font-light italic text-base md:text-lg text-fox-cream/90 leading-relaxed mb-8 max-w-md">
-            A den is where a fox returns after a day in the wild &mdash; warm, sheltered, home. Classic cocktails, velvet chairs, jazz on weekends.
-          </p>
-          <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-amber font-medium group-hover:text-snow transition-colors">
-            Visit The Den &rarr;
-          </p>
+        <a href="/the-den/" class="group relative overflow-hidden px-8 py-20 md:p-16 lg:p-20 border-b md:border-b-0 md:border-r border-fox-brown/60">
+          <img
+            src="/images/property/the-den-2-1600.webp"
+            srcset="/images/property/the-den-2-800.webp 800w, /images/property/the-den-2-1600.webp 1000w"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            alt="The Den &mdash; brick walls, retro stools at the bar, conversation lounge"
+            width="1000"
+            height="638"
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          />
+          <div class="absolute inset-0 bg-night/75 group-hover:bg-night/65 transition-colors"></div>
+          <div class="relative">
+            <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">The Den &middot; Cocktail Bar</p>
+            <h3 class="font-display font-light text-4xl md:text-5xl leading-tight mb-6">Every fox needs<br />a place to unwind.</h3>
+            <p class="font-body font-light italic text-base md:text-lg text-fox-cream/90 leading-relaxed mb-8 max-w-md">
+              A den is where a fox returns after a day in the wild &mdash; warm, sheltered, home. Classic cocktails, velvet chairs, jazz on weekends.
+            </p>
+            <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-amber font-medium group-hover:text-snow transition-colors">
+              Visit The Den &rarr;
+            </p>
+          </div>
         </a>
-        <a href="/the-dusk/" class="group relative px-8 py-20 md:p-16 lg:p-20 hover:bg-fox-brown/30 transition-colors">
-          <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">The Dusk &middot; Cigar Lounge</p>
-          <h3 class="font-display font-light text-4xl md:text-5xl leading-tight mb-6">When the fox<br />emerges.</h3>
-          <p class="font-body font-light italic text-base md:text-lg text-fox-cream/90 leading-relaxed mb-8 max-w-md">
-            Leather chairs, top-shelf bourbon, walk-in humidor. Drew Estate, Ashton, Rocky Patel, A. Fuente, and the reinvented 7-20-4 line from our own New Hampshire.
-          </p>
-          <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-amber font-medium group-hover:text-snow transition-colors">
-            Visit The Dusk &rarr;
-          </p>
+        <a href="/the-dusk/" class="group relative overflow-hidden px-8 py-20 md:p-16 lg:p-20">
+          <img
+            src="/images/property/the-dusk-1600.webp"
+            srcset="/images/property/the-dusk-800.webp 800w, /images/property/the-dusk-1600.webp 1000w"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            alt="The Dusk &mdash; leather seating and a quiet corner for cigars and bourbon"
+            width="1000"
+            height="750"
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          />
+          <div class="absolute inset-0 bg-night/75 group-hover:bg-night/65 transition-colors"></div>
+          <div class="relative">
+            <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-orange mb-6 font-medium">The Dusk &middot; Cigar Lounge</p>
+            <h3 class="font-display font-light text-4xl md:text-5xl leading-tight mb-6">When the fox<br />emerges.</h3>
+            <p class="font-body font-light italic text-base md:text-lg text-fox-cream/90 leading-relaxed mb-8 max-w-md">
+              Leather chairs, top-shelf bourbon, walk-in humidor. Drew Estate, Ashton, Rocky Patel, A. Fuente, and the reinvented 7-20-4 line from our own New Hampshire.
+            </p>
+            <p class="font-body text-xs uppercase tracking-[0.25em] text-fox-amber font-medium group-hover:text-snow transition-colors">
+              Visit The Dusk &rarr;
+            </p>
+          </div>
         </a>
       </div>
     </section>
