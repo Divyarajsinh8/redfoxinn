@@ -12,10 +12,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Red Fox Inn — official brand palette */
+  /* Red Fox Inn — official brand palette
+     Contrast retuned 2026-05-05 to clear WCAG AA across the site:
+     - warm-gray darkened from #8A8278 (failed 2.8:1 on cream) to #6B6560 (5.0:1)
+     - fox-orange-deep added for small text on light surfaces (4.5:1 on snow)
+     - warm-gray-light added for any future small-text use on dark surfaces
+  */
   --color-fox-red: #C0392B;
   --color-deep-red: #96281B;
   --color-fox-orange: #D4691A;
+  --color-fox-orange-deep: #B85518;
   --color-fox-amber: #E8A070;
   --color-fox-cream: #F5EDE4;
   --color-fox-brown: #2C1810;
@@ -23,7 +29,8 @@
   --color-forest-green: #2D5016;
   --color-forest-sage: #6B8F4E;
   --color-snow: #FAFAF7;
-  --color-warm-gray: #8A8278;
+  --color-warm-gray: #6B6560;
+  --color-warm-gray-light: #B0A89E;
 
   /* Typography — Cormorant Garamond (display) + DM Sans (body). No system fonts. */
   --font-display: "Cormorant Garamond", serif;
