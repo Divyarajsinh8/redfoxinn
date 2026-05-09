@@ -19,6 +19,10 @@ export interface Room {
   beds: BedDetail[];
   maxOccupancy: number;
   callDirectOnly?: boolean;
+  // PLACEHOLDER rates — Raj to confirm seasonal pricing before final launch.
+  priceFrom: number;            // starting nightly rate in USD
+  priceWeekly?: number;         // optional weekly rate (extended stays)
+  metaDescription: string;      // 120-155 char SEO description with location keywords
 }
 
 export const rooms: Room[] = [
@@ -47,6 +51,8 @@ export const rooms: Room[] = [
     imageAlt: 'Standard Queen room at Red Fox Inn — one queen bed, light bedding, retro 1955 motor lodge layout',
     beds: [{ type: 'Queen', count: 1 }],
     maxOccupancy: 2,
+    priceFrom: 99,
+    metaDescription: 'Standard Queen room at Red Fox Inn in Lancaster, NH. One queen bed, fiber-optic Wi-Fi, park at your door. From $99/night in the heart of downtown.',
   },
   {
     slug: 'deluxe-double',
@@ -72,6 +78,8 @@ export const rooms: Room[] = [
     imageAlt: 'Deluxe Double Room at Red Fox Inn — two double beds, sleeps four, classic motor lodge interior',
     beds: [{ type: 'Double', count: 2 }],
     maxOccupancy: 4,
+    priceFrom: 119,
+    metaDescription: 'Deluxe Double room at Red Fox Inn — two double beds in our 27-room motor lodge on Main Street, Lancaster NH. Sleeps 4. From $119/night.',
   },
   {
     slug: 'deluxe-queen',
@@ -97,6 +105,8 @@ export const rooms: Room[] = [
     imageAlt: 'Deluxe Queen Room at Red Fox Inn — two queen beds, the most spacious standard room',
     beds: [{ type: 'Queen', count: 2 }],
     maxOccupancy: 4,
+    priceFrom: 129,
+    metaDescription: 'Deluxe Queen room at Red Fox Inn in Lancaster, NH — two queen beds, our most spacious standard room. Sleeps 4 comfortably. From $129/night.',
   },
   {
     slug: 'retro-suite',
@@ -128,6 +138,8 @@ export const rooms: Room[] = [
     ],
     maxOccupancy: 4,
     callDirectOnly: true,
+    priceFrom: 149,
+    metaDescription: 'Retro Suite with kitchenette at Red Fox Inn in Lancaster, NH — queen bed, sofa pullout, kitchenette. Sleeps 4. From $149/night. Call to book.',
   },
   {
     slug: 'extended-ground',
@@ -154,6 +166,9 @@ export const rooms: Room[] = [
     imageAlt: 'Private Extended Stay (Ground Level) at Red Fox Inn — full kitchen, living room, private entrance',
     beds: [{ type: 'Queen', count: 1 }],
     maxOccupancy: 2,
+    priceFrom: 129,
+    priceWeekly: 799,
+    metaDescription: 'Private Extended Stay (Ground Level) at Red Fox Inn in Lancaster, NH. Full kitchen, living room, private entrance + free laundry. From $129/night.',
   },
   {
     slug: 'extended-upper',
@@ -181,5 +196,8 @@ export const rooms: Room[] = [
     beds: [{ type: 'Queen', count: 1 }],
     maxOccupancy: 2,
     callDirectOnly: true,
+    priceFrom: 129,
+    priceWeekly: 799,
+    metaDescription: 'Private Extended Stay (2nd Floor) at Red Fox Inn in Lancaster, NH. Full kitchen, private entrance, quiet upper level. Weekly rates available.',
   },
 ];

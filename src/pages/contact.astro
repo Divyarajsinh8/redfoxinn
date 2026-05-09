@@ -169,24 +169,30 @@ const inquiryTypes = [
       </div>
     </section>
 
-    <!-- Map placeholder -->
+    <!-- Embedded Google Map of 112 Main Street, Lancaster NH -->
     <section class="bg-fox-cream">
-      <a
-        href="https://www.google.com/maps/place/112+Main+St,+Lancaster,+NH+03584"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="block relative aspect-[21/9] overflow-hidden group"
-      >
-        <div class="absolute inset-0 bg-gradient-to-br from-forest-green via-forest-sage to-fox-amber/60 transition-transform duration-700 group-hover:scale-[1.03]"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(28,20,16,0.55)_100%)]"></div>
-        <div class="relative z-10 h-full flex items-center justify-center text-center text-snow px-6">
-          <div>
-            <p class="font-display font-light text-3xl md:text-5xl mb-4 leading-tight">112 Main Street</p>
-            <p class="font-body font-light text-lg text-fox-amber">Lancaster, NH 03584</p>
-            <p class="font-body text-xs uppercase tracking-[0.25em] mt-6 font-medium">View on Google Maps &rarr;</p>
-          </div>
-        </div>
-      </a>
+      <div class="relative aspect-[21/9] md:aspect-[21/8] overflow-hidden">
+        <iframe
+          title="Map showing Red Fox Inn at 112 Main Street, Lancaster, NH 03584"
+          src="https://maps.google.com/maps?q=112%20Main%20Street%2C%20Lancaster%2C%20NH%2003584&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="100%"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="absolute inset-0 w-full h-full border-0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="px-6 py-6 text-center">
+        <a
+          href="https://www.google.com/maps/place/112+Main+St,+Lancaster,+NH+03584"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-body text-xs uppercase tracking-[0.25em] text-fox-red border-b border-fox-orange pb-1 font-medium hover:text-deep-red hover:border-deep-red transition-colors"
+        >
+          Open in Google Maps &rarr;
+        </a>
+      </div>
     </section>
 
   </main>

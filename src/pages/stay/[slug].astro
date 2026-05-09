@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import RoomImage from '../../components/RoomImage.astro';
 import { rooms, type Room } from '../../data/rooms';
 
@@ -33,6 +34,22 @@ const roomSchema = {
     maxValue: room.maxOccupancy,
     unitCode: 'C62', // ISO unit code for "one" / count
   },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'USD',
+    price: room.priceFrom,
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: room.priceFrom,
+      priceCurrency: 'USD',
+      unitCode: 'DAY',
+      referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'DAY' },
+    },
+    availability: 'https://schema.org/InStock',
+    url: room.callDirectOnly
+      ? 'tel:+16037884921'
+      : 'https://redfoxinnnh.com/book/',
+  },
   containedInPlace: {
     '@type': 'Hotel',
     '@id': 'https://redfoxinnnh.com/#hotel',
@@ -51,7 +68,7 @@ const roomSchema = {
 ---
 <BaseLayout
   title={`${room.name} \u2014 Red Fox Inn | Lancaster, NH`}
-  description={room.descriptor}
+  description={room.metaDescription}
   transparentHeader
   jsonLd={roomSchema}
 >
@@ -72,6 +89,15 @@ const roomSchema = {
       </div>
       <div class="absolute bottom-0 left-0 right-0 px-6 pb-10 md:pb-14">
         <div class="max-w-7xl mx-auto text-snow">
+          <div class="mb-5 drop-shadow-[0_1px_8px_rgba(28,20,16,0.6)]">
+            <Breadcrumbs
+              theme="light-on-dark"
+              items={[
+                { label: 'Stay', href: '/stay/' },
+                { label: room.shortName },
+              ]}
+            />
+          </div>
           <p class="font-body text-xs uppercase tracking-[0.4em] text-fox-orange mb-4 font-medium">
             {room.category}
           </p>
@@ -105,6 +131,22 @@ const roomSchema = {
         </div>
 
         <aside class="md:col-span-2 bg-fox-cream p-8 md:p-10 self-start">
+          <div class="pb-6 mb-6 border-b border-fox-orange/40">
+            <p class="font-body text-xs uppercase tracking-[0.25em] text-warm-gray mb-2 font-medium">From</p>
+            <p class="font-display font-light text-fox-red leading-none">
+              <span class="text-4xl md:text-5xl">${room.priceFrom}</span>
+              <span class="font-body text-sm text-warm-gray ml-1 align-middle">/ night</span>
+            </p>
+            {room.priceWeekly && (
+              <p class="font-body font-light text-sm text-fox-brown mt-3">
+                or <span class="font-medium">${room.priceWeekly}/week</span> for extended stays
+              </p>
+            )}
+            <p class="font-body text-[0.7rem] text-warm-gray mt-3 font-light leading-relaxed">
+              Plus 9% NH meals &amp; rooms tax. Seasonal rates may apply &mdash; call for current pricing.
+            </p>
+          </div>
+
           <p class="font-body text-xs uppercase tracking-[0.3em] text-fox-red mb-5 font-medium">What&rsquo;s in this room</p>
           <ul class="font-body font-light text-sm md:text-base space-y-3 text-fox-brown">
             {room.included.map((item) => (

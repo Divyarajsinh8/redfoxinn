@@ -1,0 +1,69 @@
+---
+/**
+ * Breadcrumb trail with structured-data markup for search engines.
+ *
+ * Usage:
+ *   <Breadcrumbs items={[
+ *     { label: 'Stay', href: '/stay/' },
+ *     { label: 'Standard Queen' },
+ *   ]} />
+ *
+ * The "Home" entry is prepended automatically. The last item should have
+ * no href — that's the current page.
+ *
+ * Renders both:
+ *   - Visible <nav aria-label="Breadcrumb"> with links
+ *   - JSON-LD BreadcrumbList for Google's rich-result eligibility
+ */
+
+interface Item {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Item[];
+  /** Theme — light text on dark surfaces, dark text on light surfaces. */
+  theme?: 'dark-on-light' | 'light-on-dark';
+}
+
+const { items, theme = 'dark-on-light' } = Astro.props;
+
+const trail = [{ label: 'Home', href: '/' }, ...items];
+const siteUrl = 'https://redfoxinnnh.com';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: trail.map((it, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: it.label,
+    ...(it.href ? { item: new URL(it.href, siteUrl).toString() } : {}),
+  })),
+};
+
+const isLight = theme === 'light-on-dark';
+const linkClass = isLight
+  ? 'text-fox-cream/85 hover:text-fox-amber transition-colors'
+  : 'text-warm-gray hover:text-fox-red transition-colors';
+const sepClass = isLight ? 'text-fox-orange/60' : 'text-fox-orange/70';
+const currentClass = isLight ? 'text-snow font-medium' : 'text-fox-brown font-medium';
+---
+<nav aria-label="Breadcrumb" class="font-body text-xs uppercase tracking-[0.2em]">
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+    {trail.map((it, i) => (
+      <li class="flex items-center gap-x-2">
+        {it.href ? (
+          <a href={it.href} class={linkClass}>{it.label}</a>
+        ) : (
+          <span class={currentClass} aria-current="page">{it.label}</span>
+        )}
+        {i < trail.length - 1 && (
+          <span class={sepClass} aria-hidden="true">&middot;</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
